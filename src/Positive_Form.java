@@ -29,7 +29,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	private JRadioButton yes; 
     private JRadioButton no;
     private ButtonGroup gengp;
-    private JLabel meth_imp;
+    private JLabel ecu_needed;
     private JRadioButton Yes; 
     private JRadioButton No;
     private JLabel exit_date;
@@ -228,11 +228,11 @@ class Positive_Form extends JFrame implements ActionListener {
 	        gengp.add(yes); 
 	        gengp.add(no);
 	        
-	        meth_imp = new JLabel("Meth Importance"); 
-	        meth_imp.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        meth_imp.setSize(170, 20); 
-	        meth_imp.setLocation(400, 250); 
-	        c.add(meth_imp); 
+	        ecu_needed = new JLabel("ECU needed"); 
+	        ecu_needed.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        ecu_needed.setSize(170, 20); 
+	        ecu_needed.setLocation(450, 250); 
+	        c.add(ecu_needed); 
 	  
 	        yes = new JRadioButton("Yes"); 
 	        yes.setFont(new Font("Arial", Font.PLAIN, 15)); 
@@ -344,10 +344,10 @@ class Positive_Form extends JFrame implements ActionListener {
 		                
 		                String date8;
 		                if (yes.isSelected()) 
-		                    data1 = "meth_imp : Yes"
+		                    data1 = "ecu_needed : Yes"
 		                            + "\n"; 
 		                else
-		                    data1 = "meth_imp : No"
+		                    data1 = "ecu_needed : No"
 		                            + "\n"; 
 		                
 		                String data9 
