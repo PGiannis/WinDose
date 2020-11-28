@@ -19,8 +19,8 @@ class Positive_Form extends JFrame implements ActionListener {
 	private JComboBox date;
 	private JComboBox month;
 	private JComboBox year;
-	private JLabel ssn;
-	private JTextField Ssn;
+	private JLabel amka;
+	private JTextField Amka;
 	private JLabel district;
 	private JComboBox District;
 	private JLabel hosp;
@@ -36,9 +36,11 @@ class Positive_Form extends JFrame implements ActionListener {
 	private JComboBox exdate;
 	private JComboBox exmonth;
 	private JComboBox exyear;
+	private JButton sub;
+    private JButton back;
 	
 	private String dates[] 
-	        = { "1", "2", "3", "4", "5", 
+	        = { "-//-", "1", "2", "3", "4", "5", 
 	            "6", "7", "8", "9", "10", 
 	            "11", "12", "13", "14", "15", 
 	            "16", "17", "18", "19", "20", 
@@ -46,11 +48,11 @@ class Positive_Form extends JFrame implements ActionListener {
 	            "26", "27", "28", "29", "30", 
 	            "31" }; 
 	    private String months[] 
-	        = { "Jan", "feb", "Mar", "Apr", 
+	        = { "-//-", "Jan", "feb", "Mar", "Apr", 
 	            "May", "Jun", "July", "Aug", 
-	            "Sup", "Oct", "Nov", "Dec" }; 
+	            "Sep", "Oct", "Nov", "Dec" }; 
 	    private String years[]
-	        = { "1979", "1980", "1981", "1982",
+	        = { "-//-", "1979", "1980", "1981", "1982",
 	        	"1983", "1984", "1985", "1986",
 	        	"1987", "1988", "1989", "1990",
 	        	"1991", "1992", "1993", "1994",
@@ -63,7 +65,8 @@ class Positive_Form extends JFrame implements ActionListener {
 	            "2019", "2020" }; 
 	    
 	    private String Destricts[]
-	    		= {		"Περιφέρεια Αττικής",
+	    		= {		"-//-",
+	    				"Περιφέρεια Αττικής",
 	    				"Περιφέρεια Ανατολικής Μακεδονίας & Θράκης",
 	    				"Περιφέρεια Βορείου Αιγαίου",
 	    				"Περιφέρεια Δυτικής Ελλάδας",
@@ -95,130 +98,130 @@ class Positive_Form extends JFrame implements ActionListener {
 	  
 	        surname = new JLabel("Surname"); 
 	        surname.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        surname.setSize(100, 20); 
-	        surname.setLocation(100, 100); 
+	        surname.setSize(120, 20); 
+	        surname.setLocation(80, 100); 
 	        c.add(surname); 
 	        
 	        Surname = new JTextField(); 
 	        Surname.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        Surname.setSize(190, 20); 
-	        Surname.setLocation(200, 200); 
+	        Surname.setLocation(180, 100); 
 	        c.add(Surname); 
 	   
 	        lastname = new JLabel("Lastname"); 
 	        lastname.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        lastname.setSize(200, 100); 
-	        lastname.setLocation(400, 00); 
+	        lastname.setSize(120, 20); 
+	        lastname.setLocation(450, 100); 
 	        c.add(lastname); 
 	        
 	        Lastname = new JTextField(); 
 	        Lastname.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        Lastname.setSize(190, 20); 
-	        Lastname.setLocation(200, 100); 
+	        Lastname.setLocation(550, 100); 
 	        c.add(Lastname); 
 	        
 	        dob = new JLabel("Date of Birth"); 
 	        dob.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        dob.setSize(100, 20); 
-	        dob.setLocation(100, 250); 
+	        dob.setSize(120, 20); 
+	        dob.setLocation(80, 150); 
 	        c.add(dob); 
 	  
 	        date = new JComboBox(dates); 
 	        date.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        date.setSize(50, 20); 
-	        date.setLocation(200, 250); 
+	        date.setSize(70, 20); 
+	        date.setLocation(220, 150); 
 	        c.add(date); 
 	  
 	        month = new JComboBox(months); 
 	        month.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        month.setSize(60, 20); 
-	        month.setLocation(250, 250); 
+	        month.setSize(80, 20); 
+	        month.setLocation(300, 150); 
 	        c.add(month); 
 	  
 	        year = new JComboBox(years); 
 	        year.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        year.setSize(60, 20); 
-	        year.setLocation(320, 250); 
+	        year.setSize(100, 20); 
+	        year.setLocation(400, 150); 
 	        c.add(year); 
 	        
 	        test_date = new JLabel("Testing Date"); 
 	        test_date.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        test_date.setSize(100, 20); 
-	        test_date.setLocation(100, 250); 
+	        test_date.setSize(150, 20); 
+	        test_date.setLocation(80, 300); 
 	        c.add(test_date); 
 	  
 	        date = new JComboBox(dates); 
 	        date.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        date.setSize(50, 20); 
-	        date.setLocation(200, 250); 
+	        date.setSize(70, 20); 
+	        date.setLocation(220, 300); 
 	        c.add(date); 
 	  
 	        month = new JComboBox(months); 
 	        month.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        month.setSize(60, 20); 
-	        month.setLocation(250, 250); 
+	        month.setSize(80, 20); 
+	        month.setLocation(300, 300); 
 	        c.add(month); 
 	  
 	        year = new JComboBox(years); 
 	        year.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        year.setSize(60, 20); 
-	        year.setLocation(320, 250); 
+	        year.setSize(100, 20); 
+	        year.setLocation(400, 300); 
 	        c.add(year); 
 	        
-	        ssn = new JLabel("SSN"); 
-	        ssn.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        ssn.setSize(100, 20); 
-	        ssn.setLocation(100, 100); 
-	        c.add(ssn); 
+	        amka = new JLabel("AMKA"); 
+	        amka.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        amka.setSize(100, 20); 
+	        amka.setLocation(80, 200); 
+	        c.add(amka); 
 	        
-	        Ssn = new JTextField(); 
-	        Ssn.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        Ssn.setSize(190, 20); 
-	        Ssn.setLocation(200, 100); 
-	        c.add(Ssn); 
+	        Amka = new JTextField(); 
+	        Amka.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        Amka.setSize(190, 20); 
+	        Amka.setLocation(180, 200); 
+	        c.add(Amka); 
 	        
 	        district = new JLabel("Select your District"); 
 	        district.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        district.setSize(100, 20); 
-	        district.setLocation(100, 250); 
+	        district.setSize(200, 20); 
+	        district.setLocation(80, 350); 
 	        c.add(district);
 	        
 	        District = new JComboBox(Destricts); 
 	        District.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        District.setSize(50, 20); 
-	        District.setLocation(200, 250); 
+	        District.setSize(400, 20); 
+	        District.setLocation(280, 350); 
 	        c.add(District); 
 	        
 	        hosp = new JLabel("Hospital"); 
 	        hosp.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        hosp.setSize(100, 20); 
-	        hosp.setLocation(100, 100); 
+	        hosp.setLocation(450, 200); 
 	        c.add(hosp); 
 	        
 	        Hosp = new JTextField(); 
 	        Hosp.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        Hosp.setSize(190, 20); 
-	        Hosp.setLocation(200, 100); 
+	        Hosp.setLocation(550, 200); 
 	        c.add(Hosp); 
 	       
 	        symptoms = new JLabel("Symptoms"); 
 	        symptoms.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        symptoms.setSize(100, 20); 
-	        symptoms.setLocation(100, 200); 
+	        symptoms.setLocation(80, 250); 
 	        c.add(symptoms); 
 	  
 	        yes = new JRadioButton("Yes"); 
 	        yes.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        yes.setSelected(true); 
 	        yes.setSize(75, 20); 
-	        yes.setLocation(200, 200); 
+	        yes.setLocation(200, 250); 
 	        c.add(yes); 
 	  
 	        no = new JRadioButton("No"); 
 	        no.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        no.setSelected(false); 
-	        no.setSize(80, 20); 
-	        no.setLocation(275, 200); 
+	        no.setSize(160, 20); 
+	        no.setLocation(260, 250); 
 	        c.add(no); 
 	        
 	        gengp = new ButtonGroup(); 
@@ -227,22 +230,22 @@ class Positive_Form extends JFrame implements ActionListener {
 	        
 	        meth_imp = new JLabel("Meth Importance"); 
 	        meth_imp.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        meth_imp.setSize(100, 20); 
-	        meth_imp.setLocation(100, 200); 
+	        meth_imp.setSize(170, 20); 
+	        meth_imp.setLocation(400, 250); 
 	        c.add(meth_imp); 
 	  
 	        yes = new JRadioButton("Yes"); 
 	        yes.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        yes.setSelected(true); 
 	        yes.setSize(75, 20); 
-	        yes.setLocation(200, 200); 
+	        yes.setLocation(580, 250); 
 	        c.add(yes); 
 	  
 	        no = new JRadioButton("No"); 
 	        no.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        no.setSelected(false); 
 	        no.setSize(80, 20); 
-	        no.setLocation(275, 200); 
+	        no.setLocation(650, 250); 
 	        c.add(no); 
 	        
 	        gengp = new ButtonGroup(); 
@@ -252,26 +255,41 @@ class Positive_Form extends JFrame implements ActionListener {
 	        exit_date = new JLabel("Exit Date"); 
 	        exit_date.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        exit_date.setSize(100, 20); 
-	        exit_date.setLocation(100, 250); 
+	        exit_date.setLocation(80, 400); 
 	        c.add(exit_date); 
 	  
 	        date = new JComboBox(dates); 
 	        date.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        date.setSize(50, 20); 
-	        date.setLocation(200, 250); 
+	        date.setSize(70, 20); 
+	        date.setLocation(220, 400); 
 	        c.add(date); 
 	  
 	        month = new JComboBox(months); 
 	        month.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        month.setSize(60, 20); 
-	        month.setLocation(250, 250); 
+	        month.setSize(80, 20); 
+	        month.setLocation(300, 400); 
 	        c.add(month); 
 	  
 	        year = new JComboBox(years); 
 	        year.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        year.setSize(60, 20); 
-	        year.setLocation(320, 250); 
+	        year.setSize(100, 20); 
+	        year.setLocation(400, 400); 
 	        c.add(year); 
+	        
+	        sub = new JButton("Submit"); 
+	        sub.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        sub.setSize(80, 20); 
+	        sub.setLocation(300, 500); 
+	        sub.addActionListener(this); 
+	        c.add(sub); 
+	        
+	        /*back button*/
+	        back = new JButton("Back"); 
+	        back.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        back.setSize(80, 20); 
+	        back.setLocation(450, 500); 
+	        back.addActionListener(this); 
+	        c.add(back); 
 	        
 	        setVisible(true);
 	        
@@ -304,8 +322,8 @@ class Positive_Form extends JFrame implements ActionListener {
 		                 
 		                String data4;
 		                String Data
-		                    = "ssn : "
-		                      + Ssn.getText() + "\n";
+		                    = "amka : "
+		                      + Amka.getText() + "\n";
 		                
 		                String data5 
 	                    = "Districts : "
