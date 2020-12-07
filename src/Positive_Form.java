@@ -1,9 +1,13 @@
+package swing_example;
+
 import javax.swing.*; 
 import java.awt.*; 
 import java.awt.event.*;
 
 
 class Positive_Form extends JFrame implements ActionListener {
+	
+	/* Class variables*/
 	
 	private Container c;
 	private JLabel title;
@@ -90,36 +94,42 @@ class Positive_Form extends JFrame implements ActionListener {
 	        c = getContentPane(); 
 	        c.setLayout(null); 
 	  
+	        /* Page Title */
 	        title = new JLabel("Positive Form"); 
 	        title.setFont(new Font("Arial", Font.PLAIN, 30)); 
 	        title.setSize(300, 30); 
 	        title.setLocation(300, 30); 
 	        c.add(title); 
 	  
+	        /* Surname label */
 	        surname = new JLabel("Surname"); 
 	        surname.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        surname.setSize(120, 20); 
 	        surname.setLocation(80, 100); 
 	        c.add(surname); 
 	        
+	        /* Surname TextField */
 	        Surname = new JTextField(); 
 	        Surname.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        Surname.setSize(190, 20); 
 	        Surname.setLocation(180, 100); 
 	        c.add(Surname); 
 	   
+	        /* Lastname label */
 	        lastname = new JLabel("Lastname"); 
 	        lastname.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        lastname.setSize(120, 20); 
 	        lastname.setLocation(450, 100); 
 	        c.add(lastname); 
 	        
+	        /* Lastname TextField */
 	        Lastname = new JTextField(); 
 	        Lastname.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        Lastname.setSize(190, 20); 
 	        Lastname.setLocation(550, 100); 
 	        c.add(Lastname); 
 	        
+	        /* Date of Birth method */
 	        dob = new JLabel("Date of Birth"); 
 	        dob.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        dob.setSize(120, 20); 
@@ -144,6 +154,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	        year.setLocation(400, 150); 
 	        c.add(year); 
 	        
+	        /* Test date method */
 	        test_date = new JLabel("Testing Date"); 
 	        test_date.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        test_date.setSize(150, 20); 
@@ -168,42 +179,48 @@ class Positive_Form extends JFrame implements ActionListener {
 	        year.setLocation(400, 300); 
 	        c.add(year); 
 	        
+	        /* AMKA  label method */
 	        amka = new JLabel("AMKA"); 
 	        amka.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        amka.setSize(100, 20); 
 	        amka.setLocation(80, 200); 
 	        c.add(amka); 
-	        
+	        /* AMKA TextField method */
 	        Amka = new JTextField(); 
 	        Amka.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        Amka.setSize(190, 20); 
 	        Amka.setLocation(180, 200); 
 	        c.add(Amka); 
 	        
+	        /* District label method */
 	        district = new JLabel("Select your District"); 
 	        district.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        district.setSize(200, 20); 
 	        district.setLocation(80, 350); 
 	        c.add(district);
 	        
+	        /* District ComboBox method */
 	        District = new JComboBox(Destricts); 
 	        District.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        District.setSize(400, 20); 
 	        District.setLocation(280, 350); 
 	        c.add(District); 
 	        
+	        /* Hospital label method */
 	        hosp = new JLabel("Hospital"); 
 	        hosp.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        hosp.setSize(100, 20); 
 	        hosp.setLocation(450, 200); 
 	        c.add(hosp); 
 	        
+	        /* Hospital TextField method */
 	        Hosp = new JTextField(); 
 	        Hosp.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        Hosp.setSize(190, 20); 
 	        Hosp.setLocation(550, 200); 
 	        c.add(Hosp); 
 	       
+	        /* Symptoms method */
 	        symptoms = new JLabel("Symptoms"); 
 	        symptoms.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        symptoms.setSize(100, 20); 
@@ -228,6 +245,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	        gengp.add(yes); 
 	        gengp.add(no);
 	        
+	        /* ECU method */
 	        ecu_needed = new JLabel("ECU needed"); 
 	        ecu_needed.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        ecu_needed.setSize(170, 20); 
@@ -252,6 +270,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	        gengp.add(yes); 
 	        gengp.add(no); 
 	        
+	        /* Exit date method */
 	        exit_date = new JLabel("Exit Date"); 
 	        exit_date.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        exit_date.setSize(100, 20); 
@@ -276,6 +295,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	        year.setLocation(400, 400); 
 	        c.add(year); 
 	        
+	        /* Submit Button method */
 	        sub = new JButton("Submit"); 
 	        sub.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        sub.setSize(80, 20); 
@@ -283,7 +303,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	        sub.addActionListener(this); 
 	        c.add(sub); 
 	        
-	        /*back button*/
+	        /* Back button method */
 	        back = new JButton("Back"); 
 	        back.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        back.setSize(80, 20); 

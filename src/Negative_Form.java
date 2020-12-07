@@ -71,7 +71,7 @@ class Negative_Form extends JFrame implements ActionListener {
 	   
 	    public Negative_Form() {
 	    	
-	    	setTitle("Positve Form"); 
+	    	setTitle("Negative Form"); 
 	        setBounds(300, 90, 900, 600); 
 	        setDefaultCloseOperation(EXIT_ON_CLOSE); 
 	        setResizable(false); 
@@ -79,7 +79,7 @@ class Negative_Form extends JFrame implements ActionListener {
 	        c = getContentPane(); 
 	        c.setLayout(null); 
 	  
-	        title = new JLabel("Positive Form"); 
+	        title = new JLabel("Negative Form"); 
 	        title.setFont(new Font("Arial", Font.PLAIN, 30)); 
 	        title.setSize(300, 30); 
 	        title.setLocation(300, 30); 
