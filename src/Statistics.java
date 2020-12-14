@@ -1,7 +1,19 @@
 package src;
 
-public class Statistics {
+import java.util.HashMap;
 
+public class Statistics {
+	
+	public HashMap<String, Integer> percentanceOfPositiveNegative() {
+		
+		// συνδεση και άντληση δεδομένων με βάση 
+		HashMap<String, Integer> temp = new HashMap<String, Integer>();
+		temp.put("Positive", 78);
+		temp.put("Negative", 22);
+		return temp;
+	}
+	
+	/*
 	public statistics() {
 	//δέχεται τις παραμέτρους
 		double posostoPos;
@@ -10,6 +22,7 @@ public class Statistics {
 		int neg;
 		String perioxi;
 		int s;
+		
 		
 		if (s=1) { 
 			System.out.println("Ποσοστό θετικών-αρνητικών τεστ: ");
@@ -39,4 +52,7 @@ public class Statistics {
 		}
 		
 	}	
+	
+	*/
 }
+
