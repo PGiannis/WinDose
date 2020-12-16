@@ -20,28 +20,28 @@ public class PieChartSample extends Application {
 	
     @Override public void start(Stage stage) {
         Scene scene = new Scene(new Group());
-        stage.setTitle("Statistics"); //τίτλος παραθύρου
-        stage.setWidth(500); // πλάτος παραθύρου
-        stage.setHeight(500);// υψος παραθύρου
+        stage.setTitle("Statistics"); //title of window 
+        stage.setWidth(500); // width of window 
+        stage.setHeight(500);// height of window 
 
         MenuBar menuBar = new MenuBar();
-        Menu menuFile = new Menu("Statistic");
-        MenuItem item1 = new MenuItem("Percentance of positive and negative");
+        Menu menuFile = new Menu("Statistics");
+        MenuItem item1 = new MenuItem("Percentance of positives and negatives");
         item1.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent e){
             	Statistics stat = new Statistics();
-            	HashMap<String, Integer> temp = stat.percentanceOfPositiveNegative();
+            	HashMap<String, Integer> temp = stat.percentanceOfPositivesNegatives();
             	
-                // πίτα για θετικούς - αρνητικούς
+                // Pie for positives & negatives
                 ObservableList<PieChart.Data> pieChartData =
                         FXCollections.observableArrayList(
-                        new PieChart.Data("Positive", temp.get("Positive")),
-                        new PieChart.Data("Negative", temp.get("Negative")));
+                        new PieChart.Data("Positives", temp.get("Positives")),
+                        new PieChart.Data("Negatives", temp.get("Negatives")));
 
                       
                 final PieChart chart = new PieChart(pieChartData);
-                chart.setTitle("Statistics Covid-19"); //τίτλος πίτας
+                chart.setTitle("Statistics Covid-19"); // Pie's title
                 ((Group) scene.getRoot()).getChildren().add(chart);
             }
         });
