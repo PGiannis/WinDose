@@ -15,7 +15,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.Group;
  
-public class PieChartSample extends Application {
+public class PieChartCovid extends Application {
  
 	
     @Override public void start(Stage stage) {
@@ -27,6 +27,7 @@ public class PieChartSample extends Application {
         MenuBar menuBar = new MenuBar();
         Menu menuFile = new Menu("Statistics");
         MenuItem item1 = new MenuItem("Percentance of positives and negatives");
+        
         item1.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent e){
@@ -45,7 +46,18 @@ public class PieChartSample extends Application {
                 ((Group) scene.getRoot()).getChildren().add(chart);
             }
         });
+        MenuItem item2 = new MenuItem("Percentance of positives per area");
+        
+        item2.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent e){
+            	
+            }
+        });
+        
+        
         menuFile.getItems().add(item1);
+        menuFile.getItems().add(item2);
         menuBar.getMenus().addAll(menuFile);
         ((Group) scene.getRoot()).getChildren().add(menuBar);
         stage.setScene(scene);
