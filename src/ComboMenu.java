@@ -6,6 +6,7 @@ public class ComboMenu extends JComboBox {
 	
 	public ComboMenu() {
 		
+		super();
 		
 		
 	}
