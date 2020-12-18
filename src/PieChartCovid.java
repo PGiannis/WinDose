@@ -12,7 +12,7 @@ public class PieChartCovid extends Application {
         Scene scene = new Scene(new Group());
         stage.setTitle("Statistics"); //title of window 
         stage.setWidth(500); // width of window 
-        stage.setHeight(500);// height of window 
+        stage.setHeight(600);// height of window 
 
 
         PieChartPanel piePanel = new PieChartPanel();

@@ -182,8 +182,8 @@ public class PieChartPanel extends Pane{
 		} );
 		// end of age
 		
-		
-		
+	
+		// central
 		ObservableList<String> options = 
 			    FXCollections.observableArrayList(
 			        "Percentage of positives and negatives",
@@ -230,8 +230,7 @@ public class PieChartPanel extends Pane{
 							HBox hbox1 = new HBox();
 							hbox1.setPadding(new Insets(5, 140, 5, 140));
 							hbox1.getChildren().add(comboBoxArea);
-							vbox1.getChildren().add(hbox1);
-														
+							vbox1.getChildren().add(hbox1);							
 							vbox.getChildren().add(vbox1);
 							break;
 							
@@ -310,9 +309,11 @@ public class PieChartPanel extends Pane{
 			} );
 			hbox.getChildren().add(comboBox);
 			vbox.getChildren().add(hbox);
-			this.getChildren().add(vbox);
+			this.getChildren().add(vbox); 
+			
 			
 	}
+	// end of central
 	
 	public static PieChart percentageOfPositivesNegatives() {
 		Statistics stat = new Statistics();
@@ -370,6 +371,16 @@ public class PieChartPanel extends Pane{
 		return new PieChart(pieChartData);
 	}
 	
+	/*public static PieChart percentageOfPositivesPerSex() {
+		Statistics stat = new Statistics();
+		HashMap<String, Integer> temp = stat.percentageOfPositivesPerSex();
+		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+				new PieChart.Data("Women", temp.get("Women")),
+				new PieChart.Data("Men", temp.get("Men"))
+				);
+		
+		return new PieChart(pieChartData);
+	}*/
 	public static PieChart percentageOfPositivesPerSex() {
 		Statistics stat = new Statistics();
 		HashMap<String, Integer> temp = stat.percentageOfPositivesPerSex();
