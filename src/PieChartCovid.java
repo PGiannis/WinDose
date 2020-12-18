@@ -24,42 +24,10 @@ public class PieChartCovid extends Application {
         stage.setWidth(500); // width of window 
         stage.setHeight(500);// height of window 
 
-        MenuBar menuBar = new MenuBar();
-        Menu menuFile = new Menu("Statistics");
-        MenuItem item1 = new MenuItem("Percentance of positives and negatives");
-        
-        item1.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent e){
-            	Statistics stat = new Statistics();
-            	HashMap<String, Integer> temp = stat.percentanceOfPositivesNegatives();
-            	
-                // Pie for positives & negatives
-                ObservableList<PieChart.Data> pieChartData =
-                        FXCollections.observableArrayList(
-                        new PieChart.Data("Positives", temp.get("Positives")),
-                        new PieChart.Data("Negatives", temp.get("Negatives")));
 
-                      
-                final PieChart chart = new PieChart(pieChartData);
-                chart.setTitle("Statistics Covid-19"); // Pie's title
-                ((Group) scene.getRoot()).getChildren().add(chart);
-            }
-        });
-        MenuItem item2 = new MenuItem("Percentance of positives per area");
+        PieChartPanel piePanel = new PieChartPanel();
         
-        item2.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent e){
-            	
-            }
-        });
-        
-        
-        menuFile.getItems().add(item1);
-        menuFile.getItems().add(item2);
-        menuBar.getMenus().addAll(menuFile);
-        ((Group) scene.getRoot()).getChildren().add(menuBar);
+        ((Group) scene.getRoot()).getChildren().add(piePanel);
         stage.setScene(scene);
         stage.show();
     }
