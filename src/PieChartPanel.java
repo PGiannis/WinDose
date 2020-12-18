@@ -51,49 +51,49 @@ public class PieChartPanel extends Pane{
 						if (vbox1.getChildren().size() > 1) {
 							vbox1.getChildren().remove(1);
 						}
-						vbox1.getChildren().add(PieChartPanel.percentanceOfPositivesPerArea(selectedIndex));
+						vbox1.getChildren().add(PieChartPanel.percentageOfPositivesPerArea(selectedIndex));
 						break;
 					case 1:
 						if (vbox1.getChildren().size() > 1) {
 							vbox1.getChildren().remove(1);
 						}
-						vbox1.getChildren().add(PieChartPanel.percentanceOfPositivesPerArea(selectedIndex));
+						vbox1.getChildren().add(PieChartPanel.percentageOfPositivesPerArea(selectedIndex));
 						break;
 					case 2:
 						if (vbox1.getChildren().size() > 1) {
 							vbox1.getChildren().remove(1);
 						}
-						vbox1.getChildren().add(PieChartPanel.percentanceOfPositivesPerArea(selectedIndex));
+						vbox1.getChildren().add(PieChartPanel.percentageOfPositivesPerArea(selectedIndex));
 						break;
 					case 3:
 						if (vbox1.getChildren().size() > 1) {
 							vbox1.getChildren().remove(1);
 						}
-						vbox1.getChildren().add(PieChartPanel.percentanceOfPositivesPerArea(selectedIndex));
+						vbox1.getChildren().add(PieChartPanel.percentageOfPositivesPerArea(selectedIndex));
 						break;
 					case 4: 
 						if (vbox1.getChildren().size() > 1) {
 							vbox1.getChildren().remove(1);
 						}
-						vbox1.getChildren().add(PieChartPanel.percentanceOfPositivesPerArea(selectedIndex));
+						vbox1.getChildren().add(PieChartPanel.percentageOfPositivesPerArea(selectedIndex));
 						break;
 					case 5: 
 						if (vbox1.getChildren().size() > 1) {
 							vbox1.getChildren().remove(1);
 						}
-						vbox1.getChildren().add(PieChartPanel.percentanceOfPositivesPerArea(selectedIndex));
+						vbox1.getChildren().add(PieChartPanel.percentageOfPositivesPerArea(selectedIndex));
 						break;
 					case 6:
 						if (vbox1.getChildren().size() > 1) {
 							vbox1.getChildren().remove(1);
 						}
-						vbox1.getChildren().add(PieChartPanel.percentanceOfPositivesPerArea(selectedIndex));
+						vbox1.getChildren().add(PieChartPanel.percentageOfPositivesPerArea(selectedIndex));
 						break;
 					case 7:
 						if (vbox1.getChildren().size() > 1) {
 							vbox1.getChildren().remove(1);
 						}
-						vbox1.getChildren().add(PieChartPanel.percentanceOfPositivesPerArea(selectedIndex));
+						vbox1.getChildren().add(PieChartPanel.percentageOfPositivesPerArea(selectedIndex));
 						break;
 						
 						default:
@@ -129,49 +129,49 @@ public class PieChartPanel extends Pane{
 						if (vbox2.getChildren().size() > 1) {
 							vbox2.getChildren().remove(1);
 						}
-						vbox2.getChildren().add(PieChartPanel.percentanceOfPositivesPerAge(selectedIndex));
+						vbox2.getChildren().add(PieChartPanel.percentageOfPositivesPerAge(selectedIndex));
 						break;
 					case 1:
 						if (vbox2.getChildren().size() > 1) {
 							vbox2.getChildren().remove(1);
 						}
-						vbox2.getChildren().add(PieChartPanel.percentanceOfPositivesPerAge(selectedIndex));
+						vbox2.getChildren().add(PieChartPanel.percentageOfPositivesPerAge(selectedIndex));
 						break;
 					case 2:
 						if (vbox2.getChildren().size() > 1) {
 							vbox2.getChildren().remove(1);
 						}
-						vbox2.getChildren().add(PieChartPanel.percentanceOfPositivesPerAge(selectedIndex));
+						vbox2.getChildren().add(PieChartPanel.percentageOfPositivesPerAge(selectedIndex));
 						break;
 					case 3:
 						if (vbox2.getChildren().size() > 1) {
 							vbox2.getChildren().remove(1);
 						}
-						vbox2.getChildren().add(PieChartPanel.percentanceOfPositivesPerAge(selectedIndex));
+						vbox2.getChildren().add(PieChartPanel.percentageOfPositivesPerAge(selectedIndex));
 						break;
 					case 4: 
 						if (vbox2.getChildren().size() > 1) {
 							vbox2.getChildren().remove(1);
 						}
-						vbox2.getChildren().add(PieChartPanel.percentanceOfPositivesPerAge(selectedIndex));
+						vbox2.getChildren().add(PieChartPanel.percentageOfPositivesPerAge(selectedIndex));
 						break;
 					case 5: 
 						if (vbox2.getChildren().size() > 1) {
 							vbox2.getChildren().remove(1);
 						}
-						vbox2.getChildren().add(PieChartPanel.percentanceOfPositivesPerAge(selectedIndex));
+						vbox2.getChildren().add(PieChartPanel.percentageOfPositivesPerAge(selectedIndex));
 						break;
 					case 6:
 						if (vbox2.getChildren().size() > 1) {
 							vbox2.getChildren().remove(1);
 						}
-						vbox2.getChildren().add(PieChartPanel.percentanceOfPositivesPerAge(selectedIndex));
+						vbox2.getChildren().add(PieChartPanel.percentageOfPositivesPerAge(selectedIndex));
 						break;
 					case 7:
 						if (vbox2.getChildren().size() > 1) {
 							vbox2.getChildren().remove(1);
 						}
-						vbox2.getChildren().add(PieChartPanel.percentanceOfPositivesPerAge(selectedIndex));
+						vbox2.getChildren().add(PieChartPanel.percentageOfPositivesPerAge(selectedIndex));
 						break;
 					
 					default:
@@ -186,11 +186,11 @@ public class PieChartPanel extends Pane{
 		
 		ObservableList<String> options = 
 			    FXCollections.observableArrayList(
-			        "Percentance of positives and negatives",
-			        "Percentance of positives per area",
-			        "Percentance of positives per age",
-			        "Percentance of positives per sex",
-			        "Percentance of deaths"
+			        "Percentage of positives and negatives",
+			        "Percentage of positives per area",
+			        "Percentage of positives per age",
+			        "Percentage of positives per sex",
+			        "PPercentage of deaths"
 			    );
 			ComboBox<String> comboBox = new ComboBox<String>(options);
 			comboBox.setPromptText("Please select");
@@ -204,11 +204,73 @@ public class PieChartPanel extends Pane{
 						case 0:
 							if (vbox.getChildren().size() > 1) {
 								vbox.getChildren().remove(1);
+							} else if (vbox1.getChildren().size() > 1) {
+								vbox1.getChildren().remove(1);
+							} else if (vbox2.getChildren().size() > 1) {
+								vbox2.getChildren().remove(1);
+							} else if (vbox3.getChildren().size() > 1) {
+								vbox3.getChildren().remove(1);
 							}
-							vbox.getChildren().add(PieChartPanel.percentanceOfPositivesNegatives());
+							vbox.getChildren().add(PieChartPanel.percentageOfPositivesNegatives());
 							break;
+							
 						case 1:
+							
 							if (vbox.getChildren().size() > 1) {
+								vbox.getChildren().remove(1);
+							} else if (vbox1.getChildren().size() > 1) {
+								vbox1.getChildren().remove(1);
+							} else if (vbox2.getChildren().size() > 1) {
+								vbox2.getChildren().remove(1);
+							} else if (vbox3.getChildren().size() > 1) {
+								vbox3.getChildren().remove(1);
+							}
+															
+							vbox1.setPadding(new Insets(10, 10, 10, 10));
+							HBox hbox1 = new HBox();
+							hbox1.setPadding(new Insets(5, 140, 5, 140));
+							hbox1.getChildren().add(comboBoxArea);
+							vbox1.getChildren().add(hbox1);
+														
+							vbox.getChildren().add(vbox1);
+							break;
+							
+						case 2:
+							
+							if (vbox.getChildren().size() > 1) {
+								vbox.getChildren().remove(1);
+							} else if (vbox1.getChildren().size() > 1) {
+								vbox1.getChildren().remove(1);
+							} else if (vbox2.getChildren().size() > 1) {
+								vbox2.getChildren().remove(1);
+							} else if (vbox3.getChildren().size() > 1) {
+								vbox3.getChildren().remove(1);
+							}
+													
+							vbox2.setPadding(new Insets(10, 10, 10, 10));
+							HBox hbox2 = new HBox();
+							hbox2.setPadding(new Insets(5, 140, 5, 140));
+							hbox2.getChildren().add(comboBoxAge);
+							vbox2.getChildren().add(hbox2);
+							vbox.getChildren().add(vbox2);
+							break;
+							
+						case 3:
+							
+							if (vbox.getChildren().size() > 1) {
+								vbox.getChildren().remove(1);
+							} else if (vbox1.getChildren().size() > 1) {
+								vbox1.getChildren().remove(1);
+							} else if (vbox2.getChildren().size() > 1) {
+								vbox2.getChildren().remove(1);
+							} else if (vbox3.getChildren().size() > 1) {
+								vbox3.getChildren().remove(1);
+							}
+							vbox3.getChildren().add(PieChartPanel.percentageOfPositivesPerSex());
+							break;
+							
+							/*
+							 if (vbox.getChildren().size() > 1) {
 								vbox.getChildren().remove(1);
 							}
 							
@@ -217,10 +279,11 @@ public class PieChartPanel extends Pane{
 							hbox1.setPadding(new Insets(5, 140, 5, 140));
 							hbox1.getChildren().add(comboBoxArea);
 							vbox1.getChildren().add(hbox1);
-							
-							vbox.getChildren().add(vbox1);
+							vbox1.getChildren().add(vbox1);
 							break;
+							
 						case 2:
+							
 							if (vbox.getChildren().size() > 1) {
 								vbox.getChildren().remove(1);
 							}
@@ -230,16 +293,17 @@ public class PieChartPanel extends Pane{
 							hbox2.setPadding(new Insets(5, 140, 5, 140));
 							hbox2.getChildren().add(comboBoxAge);
 							vbox2.getChildren().add(hbox2);
-							vbox.getChildren().add(vbox2);
+							vbox2.getChildren().add(vbox2);
 							break;
+							
 						case 3:
-							if (vbox3.getChildren().size() > 1) {
-								vbox3.getChildren().remove(1);
+							if (vbox.getChildren().size() > 1) {
+								vbox.getChildren().remove(1);
 							}
-							vbox3.getChildren().add(PieChartPanel.percentanceOfPositivesPerSex());
+							vbox3.getChildren().add(PieChartPanel.percentageOfPositivesPerSex());
 							break;
 						default:
-							
+							*/
 					}
 				}
 				
@@ -250,9 +314,9 @@ public class PieChartPanel extends Pane{
 			
 	}
 	
-	public static PieChart percentanceOfPositivesNegatives() {
+	public static PieChart percentageOfPositivesNegatives() {
 		Statistics stat = new Statistics();
-		HashMap<String, Integer> temp = stat.percentanceOfPositivesNegatives();
+		HashMap<String, Integer> temp = stat.percentageOfPositivesNegatives();
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data("Positives", temp.get("Positives")),
 				new PieChart.Data("Negatives", temp.get("Negatives"))
@@ -261,37 +325,54 @@ public class PieChartPanel extends Pane{
 		return new PieChart(pieChartData);
 	}
 	
-	public static PieChart percentanceOfPositivesPerArea(int areaId) {
+	public static PieChart percentageOfPositivesPerArea(int areaId) {
 		HashMap<Integer, Integer> areasId = new HashMap<Integer, Integer>();
-		areasId.put(0, 50 );// 1o to νούμερον του case και 2ο το id απο βάση
+		areasId.put(0, 0 );// 1o to νούμερον του case και 2ο το id απο βάση
+		areasId.put(1, 1 );
+		areasId.put(2, 2 );
+		areasId.put(3, 3 );
+		areasId.put(4, 4 );
+		areasId.put(5, 5 );
+		areasId.put(6, 6 );
+		areasId.put(7, 7 );
+		
 		Statistics stat = new Statistics();
-		HashMap<String, Integer> temp = stat.percentanceOfPositivesInAnArea(areasId.get(areaId));
+		HashMap<String, Integer> temp = stat.percentageOfPositivesInAnArea(areasId.get(areaId));
 		
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-				new PieChart.Data("Positives", temp.get("Positives")),
-				new PieChart.Data("Negatives", temp.get("Negatives"))
+				new PieChart.Data("Positives in selected area", temp.get("Positives in selected area")),
+				new PieChart.Data("Negatives in selected area", temp.get("Negatives in selected area"))
 				);
 		
 		return new PieChart(pieChartData);
 	}
 	
-	public static PieChart percentanceOfPositivesPerAge(int ageId) {
+	public static PieChart percentageOfPositivesPerAge(int ageId) {
 		HashMap<Integer, Integer> agesId = new HashMap<Integer, Integer>();
-		agesId.put(0, 50 );// 1o to νούμερον του case και 2ο το id απο βάση
+		
+		agesId.put(0, 0 );// 1o to νούμερον του case και 2ο το id απο βάση
+		agesId.put(1, 1 );
+		agesId.put(2, 2 );
+		agesId.put(3, 3 );
+		agesId.put(4, 4 );
+		agesId.put(5, 5 );
+		agesId.put(6, 6 );
+		agesId.put(7, 7 );
+		
 		Statistics stat = new Statistics();
-		HashMap<String, Integer> temp = stat.percentanceOfPositivesPerAge(agesId.get(ageId));
+		HashMap<String, Integer> temp = stat.percentageOfPositivesPerAge(agesId.get(ageId));
 		
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-				new PieChart.Data("Positives", temp.get("Positives")),
-				new PieChart.Data("Negatives", temp.get("Negatives"))
+				new PieChart.Data("Positives in selected age", temp.get("Positives in selected age")),
+				new PieChart.Data("Negatives in selected age", temp.get("Negatives in selected age"))
 				);
 		
 		return new PieChart(pieChartData);
 	}
 	
-	public static PieChart percentanceOfPositivesPerSex() {
+	public static PieChart percentageOfPositivesPerSex() {
 		Statistics stat = new Statistics();
-		HashMap<String, Integer> temp = stat.percentanceOfPositivesPerSex();
+		HashMap<String, Integer> temp = stat.percentageOfPositivesPerSex();
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data("Women", temp.get("Women")),
 				new PieChart.Data("Men", temp.get("Men"))

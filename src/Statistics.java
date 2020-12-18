@@ -6,39 +6,40 @@ import javafx.scene.chart.PieChart;
 
 public class Statistics {
 	
-	public HashMap<String, Integer> percentanceOfPositivesNegatives() {
+	public HashMap<String, Integer> percentageOfPositivesNegatives() {
 		
 		// συνδεση και άντληση δεδομένων με βάση 
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Positives", 78);
-		temp.put("Negatives", 22);
+		temp.put("Positives", 200);
+		temp.put("Negatives", 100);
 		return temp;
 	}
 	
-	public HashMap<String, Integer> percentanceOfPositivesInAnArea(int areaDBId) {
+	public HashMap<String, Integer> percentageOfPositivesInAnArea(int areaDBId) {
 		
 		
 		// συνδεση και άντληση δεδομένων με βάση 
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Positives in selected area", 50);
-		temp.put("Positives in Greece", 50);
+		temp.put("Positives in selected area", 40);
+		temp.put("Negatives in selected area", 60);
 		return temp;
 		
 		
 	}
 	
-	public HashMap<String, Integer> percentanceOfPositivesPerAge(int ageDB) {
+	public HashMap<String, Integer> percentageOfPositivesPerAge(int ageDB) {
 		
 		
 		// συνδεση και άντληση δεδομένων με βάση 
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
 		temp.put("Positives in selected area", 80);
-		temp.put("Positives in Greece", 20);
+		temp.put("Negatives in selected area", 20);
 		return temp;
 		
 	}
 	
-	public HashMap<String, Integer> percentanceOfPositivesPerSex() {
+	public HashMap<String, Integer> percentageOfPositivesPerSex() {
+		
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
 		temp.put("Women", 78);
 		temp.put("Men", 22);
