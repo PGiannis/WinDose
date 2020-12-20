@@ -193,7 +193,7 @@ public class PieChartPanel extends Pane{
 			        "Percentage of positives per area",
 			        "Percentage of positives per age",
 			        "Percentage of positives per sex",
-			        "Percentage of deaths",
+			        "Mortality Rate",
 			        "Completeness of ICU"
 			    );
 			ComboBox<String> comboBox = new ComboBox<String>(options);
@@ -305,7 +305,7 @@ public class PieChartPanel extends Pane{
 							} else if (vbox5.getChildren().size() > 1) {
 								vbox5.getChildren().remove(1);
 							}
-							vbox.getChildren().add(PieChartPanel.percentageOfDeaths());
+							vbox.getChildren().add(PieChartPanel.mortalityRate());
 							break;
 							
 						case 5://	ICU
@@ -437,12 +437,12 @@ public class PieChartPanel extends Pane{
 	
 
 
-	public static PieChart percentageOfDeaths() {
+	public static PieChart mortalityRate() {
 		Statistics stat = new Statistics();
-		HashMap<String, Integer> temp = stat.percentageOfDeaths();
+		HashMap<String, Integer> temp = stat.mortalityRate();
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data("Deaths", temp.get("Deaths")),
-				new PieChart.Data("", temp.get(""))
+				new PieChart.Data("Total patients", temp.get("Total patients"))
 				);
 		
 		return new PieChart(pieChartData);

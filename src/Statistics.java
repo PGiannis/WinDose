@@ -2,7 +2,7 @@ package src;
 
 import java.util.HashMap;
 
-import javafx.scene.chart.PieChart;
+//import javafx.scene.chart.PieChart;
 
 public class Statistics {
 	
@@ -50,12 +50,12 @@ public class Statistics {
 		
 	}
 	
-	public HashMap<String, Integer>percentageOfDeaths(){
+	public HashMap<String, Integer>mortalityRate(){
 		
 		// DB connection
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
 		temp.put("Deaths", 10);
-		temp.put("", 90);
+		temp.put("Total patients", 90);
 		return temp;
 	}
 	
