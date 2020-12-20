@@ -33,8 +33,8 @@ public class Statistics {
 		
 		// DB connection 
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Positives in selected area", 80);
-		temp.put("Negatives in selected area", 20);
+		temp.put("Positives in selected age", 80);
+		temp.put("Negatives in selected age", 20);
 		return temp;
 		
 	}
@@ -44,10 +44,29 @@ public class Statistics {
 		
 		// DB connection
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Women", 78);
-		temp.put("Men", 22);
+		temp.put("Women", 50);
+		temp.put("Men", 50);
 		return temp;
 		
 	}
+	
+	public HashMap<String, Integer>percentageOfDeaths(){
+		
+		// DB connection
+		HashMap<String, Integer> temp = new HashMap<String, Integer>();
+		temp.put("Deaths", 10);
+		temp.put("", 90);
+		return temp;
+	}
+	
+	public HashMap<String, Integer>percentageOfAvailiableICU(){
+			
+			// DB connection
+			HashMap<String, Integer> temp = new HashMap<String, Integer>();
+			temp.put("Availiable ICU", 35);
+			temp.put("Used ICU", 65);
+			return temp;
+		}
+	
 }
 
