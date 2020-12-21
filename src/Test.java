@@ -1,5 +1,4 @@
-
-	import javax.swing.*; 
+import javax.swing.*; 
 import java.awt.*; 
 import java.awt.event.*; 
 
@@ -7,7 +6,7 @@ class First_page
 	extends JFrame
 	implements ActionListener {
 		
-		/* Components of the form*/
+		/* Class variables */
 	    private Container c; 
 	    private JLabel title;
 	    private JLabel diagnosis;
@@ -29,21 +28,21 @@ class First_page
 	        c = getContentPane(); 
 	        c.setLayout(null); 
 	  
-	        /*page title*/
+	        /* Page Title */
 	        title = new JLabel("Registration Form"); 
 	        title.setFont(new Font("Arial", Font.PLAIN, 30)); 
 	        title.setSize(300, 30); 
 	        title.setLocation(300, 30); 
 	        c.add(title); 
 	        
-	        /*Choice name*/
+	        /* Diagnosis label method */
 	        diagnosis = new JLabel ("Diagnosis");
 	        diagnosis.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        diagnosis.setSize(100, 20); 
 	        diagnosis.setLocation(100, 200); 
 	        c.add(diagnosis); 
 	  
-	        /*positive box*/
+	        /* Positive Box method */
 	        positive = new JRadioButton("Positive"); 
 	        positive.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        positive.setSelected(true); 
@@ -51,7 +50,7 @@ class First_page
 	        positive.setLocation(100, 250); 
 	        c.add(positive); 
 	  
-	        /*negative box*/
+	        /* Negative Box method */
 	        negative = new JRadioButton("Negative"); 
 	        negative.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        negative.setSelected(false); 
@@ -59,12 +58,12 @@ class First_page
 	        negative.setLocation(100, 300); 
 	        c.add(negative); 
 	  
-	        /*shows that only one option is permitted*/
+	        /* Shows that only one option is permitted */
 	        gengp = new ButtonGroup(); 
 	        gengp.add(positive); 
 	        gengp.add(negative); 
 	        
-	        /*submit button*/
+	        /* Submit button */
 	        sub = new JButton("Submit"); 
 	        sub.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        sub.setSize(80, 20); 
@@ -72,7 +71,7 @@ class First_page
 	        sub.addActionListener(this); 
 	        c.add(sub); 
 	        
-	        /*back button*/
+	        /* Back Button method */
 	        back = new JButton("Back"); 
 	        back.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        back.setSize(80, 20); 
@@ -102,6 +101,9 @@ class First_page
 	        c.add(resadd); 
 	  
 	        setVisible(true); 
+
+
+	  
 	        
 	    } 
 	    
@@ -121,10 +123,19 @@ class First_page
 	                tout.setEditable(false); 
 	                res.setText("Registration Successfully.."); 
 	                
-	     } else if (e.getSource() == back) { 
+	                    
+	  
+	                
+	        }
+	        else if (e.getSource() == back) { 
 	        	tout.setText(""); 
                 resadd.setText(""); 
                 res.setText("Coming Soon!"); 
-	        } 
 	    } 
-	}
+	} 
+	  
+}
+
+
+ 
+   

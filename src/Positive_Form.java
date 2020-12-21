@@ -1,3 +1,5 @@
+
+
 import javax.swing.*; 
 import java.awt.*; 
 import java.awt.event.*;
@@ -5,12 +7,14 @@ import java.awt.event.*;
 
 class Positive_Form extends JFrame implements ActionListener {
 	
+	/* Class variables*/
+	
 	private Container c;
 	private JLabel title;
-	private JLabel surname;
-	private JTextField Surname;
-	private JLabel lastname;
-	private JTextField Lastname;
+	private JLabel surname1;
+	private JTextField surname2;
+	private JLabel lastname1;
+	private JTextField lastname2;
 	private JLabel dob;
 	private JComboBox bdate;
 	private JComboBox bmonth;
@@ -19,12 +23,12 @@ class Positive_Form extends JFrame implements ActionListener {
 	private JComboBox date;
 	private JComboBox month;
 	private JComboBox year;
-	private JLabel amka;
-	private JTextField Amka;
-	private JLabel district;
-	private JComboBox District;
-	private JLabel hosp;
-	private JTextField Hosp;
+	private JLabel amka1;
+	private JTextField amka2;
+	private JLabel district1;
+	private JComboBox district2;
+	private JLabel hosp1;
+	private JTextField hosp2;
 	private JLabel symptoms;
 	private JRadioButton yes; 
     private JRadioButton no;
@@ -36,6 +40,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	private JComboBox exdate;
 	private JComboBox exmonth;
 	private JComboBox exyear;
+	private JTextArea textArea;
 	private JButton sub;
     private JButton back;
 	
@@ -90,36 +95,42 @@ class Positive_Form extends JFrame implements ActionListener {
 	        c = getContentPane(); 
 	        c.setLayout(null); 
 	  
+	        /* Page Title */
 	        title = new JLabel("Positive Form"); 
 	        title.setFont(new Font("Arial", Font.PLAIN, 30)); 
 	        title.setSize(300, 30); 
 	        title.setLocation(300, 30); 
 	        c.add(title); 
 	  
-	        surname = new JLabel("Surname"); 
-	        surname.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        surname.setSize(120, 20); 
-	        surname.setLocation(80, 100); 
-	        c.add(surname); 
+	        /* Surname label */
+	        surname1 = new JLabel("Surname"); 
+	        surname1.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        surname1.setSize(120, 20); 
+	        surname1.setLocation(80, 100); 
+	        c.add(surname1); 
 	        
-	        Surname = new JTextField(); 
-	        Surname.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        Surname.setSize(190, 20); 
-	        Surname.setLocation(180, 100); 
-	        c.add(Surname); 
+	        /* Surname TextField */
+	        surname2 = new JTextField(); 
+	        surname2.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        surname2.setSize(190, 20); 
+	        surname2.setLocation(180, 100); 
+	        c.add(surname2); 
 	   
-	        lastname = new JLabel("Lastname"); 
-	        lastname.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        lastname.setSize(120, 20); 
-	        lastname.setLocation(450, 100); 
-	        c.add(lastname); 
+	        /* Lastname label */
+	        lastname1 = new JLabel("Lastname"); 
+	        lastname1.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        lastname1.setSize(120, 20); 
+	        lastname1.setLocation(450, 100); 
+	        c.add(lastname1); 
 	        
-	        Lastname = new JTextField(); 
-	        Lastname.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        Lastname.setSize(190, 20); 
-	        Lastname.setLocation(550, 100); 
-	        c.add(Lastname); 
+	        /* Lastname TextField */
+	        lastname2 = new JTextField(); 
+	        lastname2.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        lastname2.setSize(190, 20); 
+	        lastname2.setLocation(550, 100); 
+	        c.add(lastname2); 
 	        
+	        /* Date of Birth method */
 	        dob = new JLabel("Date of Birth"); 
 	        dob.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        dob.setSize(120, 20); 
@@ -144,6 +155,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	        year.setLocation(400, 150); 
 	        c.add(year); 
 	        
+	        /* Test date method */
 	        test_date = new JLabel("Testing Date"); 
 	        test_date.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        test_date.setSize(150, 20); 
@@ -168,42 +180,48 @@ class Positive_Form extends JFrame implements ActionListener {
 	        year.setLocation(400, 300); 
 	        c.add(year); 
 	        
-	        amka = new JLabel("AMKA"); 
-	        amka.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        amka.setSize(100, 20); 
-	        amka.setLocation(80, 200); 
-	        c.add(amka); 
+	        /* AMKA  label method */
+	        amka1 = new JLabel("AMKA"); 
+	        amka1.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        amka1.setSize(100, 20); 
+	        amka1.setLocation(80, 200); 
+	        c.add(amka1); 
+	        /* AMKA TextField method */
+	        amka2 = new JTextField(); 
+	        amka2.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        amka2.setSize(190, 20); 
+	        amka2.setLocation(180, 200); 
+	        c.add(amka2); 
 	        
-	        Amka = new JTextField(); 
-	        Amka.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        Amka.setSize(190, 20); 
-	        Amka.setLocation(180, 200); 
-	        c.add(Amka); 
+	        /* District label method */
+	        district1 = new JLabel("Select your District"); 
+	        district1.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        district1.setSize(200, 20); 
+	        district1.setLocation(80, 350); 
+	        c.add(district1);
 	        
-	        district = new JLabel("Select your District"); 
-	        district.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        district.setSize(200, 20); 
-	        district.setLocation(80, 350); 
-	        c.add(district);
+	        /* District ComboBox method */
+	        district2 = new JComboBox(Destricts); 
+	        district2.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        district2.setSize(400, 20); 
+	        district2.setLocation(280, 350); 
+	        c.add(district2); 
 	        
-	        District = new JComboBox(Destricts); 
-	        District.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        District.setSize(400, 20); 
-	        District.setLocation(280, 350); 
-	        c.add(District); 
+	        /* Hospital label method */
+	        hosp1 = new JLabel("Hospital"); 
+	        hosp1.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        hosp1.setSize(100, 20); 
+	        hosp1.setLocation(450, 200); 
+	        c.add(hosp1);
 	        
-	        hosp = new JLabel("Hospital"); 
-	        hosp.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        hosp.setSize(100, 20); 
-	        hosp.setLocation(450, 200); 
-	        c.add(hosp); 
-	        
-	        Hosp = new JTextField(); 
-	        Hosp.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        Hosp.setSize(190, 20); 
-	        Hosp.setLocation(550, 200); 
-	        c.add(Hosp); 
+	        /* Hospital TextField method */
+	        hosp2 = new JTextField(); 
+	        hosp2.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        hosp2.setSize(190, 20); 
+	        hosp2.setLocation(550, 200); 
+	        c.add(hosp2); 
 	       
+	        /* Symptoms method */
 	        symptoms = new JLabel("Symptoms"); 
 	        symptoms.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        symptoms.setSize(100, 20); 
@@ -228,6 +246,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	        gengp.add(yes); 
 	        gengp.add(no);
 	        
+	        /* ECU method */
 	        ecu_needed = new JLabel("ECU needed"); 
 	        ecu_needed.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        ecu_needed.setSize(170, 20); 
@@ -252,6 +271,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	        gengp.add(yes); 
 	        gengp.add(no); 
 	        
+	        /* Exit date method */
 	        exit_date = new JLabel("Exit Date"); 
 	        exit_date.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        exit_date.setSize(100, 20); 
@@ -276,6 +296,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	        year.setLocation(400, 400); 
 	        c.add(year); 
 	        
+	        /* Submit Button method */
 	        sub = new JButton("Submit"); 
 	        sub.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        sub.setSize(80, 20); 
@@ -283,7 +304,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	        sub.addActionListener(this); 
 	        c.add(sub); 
 	        
-	        /*back button*/
+	        /* Back button method */
 	        back = new JButton("Back"); 
 	        back.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        back.setSize(80, 20); 
@@ -297,65 +318,10 @@ class Positive_Form extends JFrame implements ActionListener {
 	        public void actionPerformed(ActionEvent e) 
 		    { 
 		        
-		             
-		                String data1; 
-		                String data 
-		                    = "surname : "
-		                      + Surname.getText() + "\n"
-		                      + "lastname : "
-		                      + Lastname.getText() + "\n"; 
-		                
-		                String data2 
-		                    = "DOB : "
-		                      + (String)date.getSelectedItem() 
-		                      + "/" + (String)month.getSelectedItem() 
-		                      + "/" + (String)year.getSelectedItem() 
-		                      + "\n"; 
-		                
-		                String data3 
-	                    = "test_date : "
-	                      + (String)date.getSelectedItem() 
-	                      + "/" + (String)month.getSelectedItem() 
-	                      + "/" + (String)year.getSelectedItem() 
-	                      + "\n"; 
-		  
-		                 
-		                String data4;
-		                String Data
-		                    = "amka : "
-		                      + Amka.getText() + "\n";
-		                
-		                String data5 
-	                    = "Districts : "
-	                      + (String)District.getSelectedItem() 
-	                      + "\n"; 
-		                
-		                String data6
-		                	= "hosp : "
-		                      + Hosp.getText() + "\n";
-		                
-		                String date7;
-		                if (yes.isSelected()) 
-		                    data1 = "symptoms : Yes"
-		                            + "\n"; 
-		                else
-		                    data1 = "symptoms : No"
-		                            + "\n"; 
-		                
-		                String date8;
-		                if (yes.isSelected()) 
-		                    data1 = "ecu_needed : Yes"
-		                            + "\n"; 
-		                else
-		                    data1 = "ecu_needed : No"
-		                            + "\n"; 
-		                
-		                String data9 
-	                    = "exit_date : "
-	                      + (String)date.getSelectedItem() 
-	                      + "/" + (String)month.getSelectedItem() 
-	                      + "/" + (String)year.getSelectedItem() 
-	                      + "\n"; 
+		      String surname =  surname2.getText(); 
+		      String lastname =  surname2.getText();
+		      
+		               
 		             
 		    }
 	    }
