@@ -106,7 +106,7 @@ public class PieChartPanel extends Pane{
 				
 			} );
 		// end of area
-		
+	/*	
 		// age
 		ObservableList<String> ages = 
 			    FXCollections.observableArrayList(
@@ -184,7 +184,7 @@ public class PieChartPanel extends Pane{
 			
 		} );
 		// end of age
-		
+		*/
 	
 		// central
 		ObservableList<String> options = 
@@ -261,15 +261,17 @@ public class PieChartPanel extends Pane{
 							} else if (vbox5.getChildren().size() > 1) {
 								vbox5.getChildren().remove(1);
 							}
+							vbox.getChildren().add(PieChartPanel.percentageOfPositivesPerAge());
+							break;
 													
-							vbox2.setPadding(new Insets(10, 10, 10, 10));
+/*							vbox2.setPadding(new Insets(10, 10, 10, 10));
 							HBox hbox2 = new HBox();
 							hbox2.setPadding(new Insets(5, 140, 5, 140));
 							hbox2.getChildren().add(comboBoxAge);
 							vbox2.getChildren().add(hbox2);							
 							vbox.getChildren().add(vbox2);
 							break;
-							
+*/
 						case 3://	sex
 							
 							if (vbox.getChildren().size() > 1) {
@@ -369,7 +371,7 @@ public class PieChartPanel extends Pane{
 	}
 	
 	
-	public static PieChart percentageOfPositivesPerAge(int ageId) {
+	/*public static PieChart percentageOfPositivesPerAge(int ageId) {
 		HashMap<Integer, Integer> agesId = new HashMap<Integer, Integer>();
 		agesId.put(0, 0 );// 1o to νούμερον του case και 2ο το id απο βάση
 		agesId.put(1, 1 );
@@ -390,6 +392,9 @@ public class PieChartPanel extends Pane{
 		
 		return new PieChart(pieChartData);
 	}
+	*/
+	
+	
 	
 	/*public static PieChart percentageOfPositivesPerAge(int ageId) {
 		HashMap<Integer, Integer> agesId = new HashMap<Integer, Integer>();
@@ -424,6 +429,27 @@ public class PieChartPanel extends Pane{
 		
 		return new PieChart(pieChartData);
 	}*/
+	
+	
+	
+	public static PieChart percentageOfPositivesPerAge() {
+		Statistics stat = new Statistics();
+		HashMap<String, Integer> temp = stat.percentageOfPositivesPerSex();
+		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+				new PieChart.Data("0-9", temp.get("0-9")),
+				new PieChart.Data("10-19", temp.get("10-19"))//,
+			//	new PieChart.Data("20-29", temp.get("20-29")),
+			//	new PieChart.Data("30-39", temp.get("30-39")),
+			//	new PieChart.Data("40-49", temp.get("40-49")),
+			//	new PieChart.Data("50-59", temp.get("50-59")),
+			//	new PieChart.Data("60-69", temp.get("60-69")),
+			//	new PieChart.Data("70+", temp.get("70+"))
+				);
+		
+		return new PieChart(pieChartData);
+	}
+	
+	
 	public static PieChart percentageOfPositivesPerSex() {
 		Statistics stat = new Statistics();
 		HashMap<String, Integer> temp = stat.percentageOfPositivesPerSex();

@@ -2,7 +2,7 @@ package src;
 
 import java.util.HashMap;
 
-//import javafx.scene.chart.PieChart;
+import javafx.scene.chart.PieChart;
 
 public class Statistics {
 	
@@ -33,8 +33,14 @@ public class Statistics {
 		
 		// DB connection 
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Positives in selected age", 80);
-		temp.put("Negatives in selected age", 20);
+		temp.put("0-9", 10);
+		temp.put("10-19", 20);
+	//	temp.put("20-29", 20);
+	//	temp.put("30-39", 20);
+	//	temp.put("40-49", 20);
+	//	temp.put("50-59", 20);
+	//	temp.put("60-69", 20);
+	//	temp.put("70+", 20);
 		return temp;
 		
 	}
