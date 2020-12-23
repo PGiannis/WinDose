@@ -1,42 +1,78 @@
 package src;
 
-public class Statistics {
+import java.util.HashMap;
 
-	public statistics() {
-	//δέχεται τις παραμέτρους
-		double posostoPos;
-		double posostoNeg;
-		int pos;
-		int neg;
-		String perioxi;
-		int s;
+import javafx.scene.chart.PieChart;
+
+public class Statistics {
+	
+	public HashMap<String, Integer> percentageOfPositivesNegatives() {
 		
-		if (s=1) { 
-			System.out.println("Ποσοστό θετικών-αρνητικών τεστ: ");
-			posostoPos = pos / (pos + neg) * 100);
-			posostoNeg = neg / (pos + neg) * 100);
-			PieChartSample posNeg = new PieChartSample;
-			posNeg.posPie(posostoPos, posostoNeg);
+		
+		// DB connection
+		HashMap<String, Integer> temp = new HashMap<String, Integer>();
+		temp.put("Positives", 200);
+		temp.put("Negatives", 100);
+		return temp;
+	}
+	
+	public HashMap<String, Integer> percentageOfPositivesInAnArea(int areaDBId) {
+		
+		
+		// DB connection
+		HashMap<String, Integer> temp = new HashMap<String, Integer>();
+		temp.put("Positives in selected area", 40);
+		temp.put("Negatives in selected area", 60);
+		return temp;
+		
+		
+	}
+	
+	public HashMap<String, Integer> percentageOfPositivesPerAge(int ageDB) {
+		
+		
+		// DB connection 
+		HashMap<String, Integer> temp = new HashMap<String, Integer>();
+		temp.put("0-9", 10);
+		temp.put("10-19", 20);
+	//	temp.put("20-29", 20);
+	//	temp.put("30-39", 20);
+	//	temp.put("40-49", 20);
+	//	temp.put("50-59", 20);
+	//	temp.put("60-69", 20);
+	//	temp.put("70+", 20);
+		return temp;
+		
+	}
+	
+	public HashMap<String, Integer> percentageOfPositivesPerSex() {
+		
+		
+		// DB connection
+		HashMap<String, Integer> temp = new HashMap<String, Integer>();
+		temp.put("Women", 50);
+		temp.put("Men", 50);
+		return temp;
+		
+	}
+	
+	public HashMap<String, Integer>mortalityRate(){
+		
+		// DB connection
+		HashMap<String, Integer> temp = new HashMap<String, Integer>();
+		temp.put("Deaths", 10);
+		temp.put("Total patients", 90);
+		return temp;
+	}
+	
+	public HashMap<String, Integer>percentageOfAvailiableICU(){
 			
-		} else if (s=2) {
-			System.out.println("Ποσοστό θετικών κρουσμάτων στην περιοχή" + perioxi );
-			posostoPos = posPer / (posPer + negPer) * 100);
-			posostoNeg = neg / (pos + neg) * 100);
-			PieChartSample posNeg = new PieChartSample;
-			posNeg.posPie(posostoPos, posostoNeg);
-		} else if (s=3) {
-			
-			posostoPos = posPer / (posPer + negPer) * 100);
-			posostoNeg = neg / (pos + neg) * 100);
-			PieChartSample posNeg = new PieChartSample;
-			posNeg.posPie(posostoPos, posostoNeg);
-		} else if (s=4) {
-			
-			
-			
-		} else if (s=5) {
-			
+			// DB connection
+			HashMap<String, Integer> temp = new HashMap<String, Integer>();
+			temp.put("Availiable ICU", 35);
+			temp.put("Used ICU", 65);
+			return temp;
 		}
-		
-	}	
+	
 }
+
