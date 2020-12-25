@@ -72,7 +72,16 @@ public Home() {
     c.add(option5); 
     
     setVisible(true);
+}
+public void actionPerformed(ActionEvent e) {
+	if  (e.getSource() == option1 || e.getSource() == option2 ) {
+	
+	First_page h = new First_page();
+       	
+	h.show();
+        
+	dispose();
 
-   
-	}
+	} 	
+}
 }
