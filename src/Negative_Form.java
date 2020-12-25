@@ -7,18 +7,18 @@ class Negative_Form extends JFrame implements ActionListener {
 	
 	private Container c;
 	private JLabel title;
-	private JLabel surname;
-	private JTextField Surname;
-	private JLabel lastname;
-	private JTextField Lastname;
+	private JLabel surname1;
+	private JTextField surname2;
+	private JLabel lastname1;
+	private JTextField lastname2;
 	private JLabel dob;
 	private JComboBox bdate;
 	private JComboBox bmonth;
 	private JComboBox byear;
 	private JLabel test_date;
-	private JComboBox date;
-	private JComboBox month;
-	private JComboBox year;
+	private JComboBox tdate;
+	private JComboBox tmonth;
+	private JComboBox tyear;
 	private JLabel amka;
 	private JTextField Amka;
 	private JLabel district;
@@ -87,32 +87,32 @@ class Negative_Form extends JFrame implements ActionListener {
 	        c.add(title); 
 	  
 	        /* Surname label */
-	        surname = new JLabel("Surname"); 
-	        surname.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        surname.setSize(120, 20); 
-	        surname.setLocation(80, 100); 
-	        c.add(surname); 
+	        surname1 = new JLabel("Surname"); 
+	        surname1.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        surname1.setSize(120, 20); 
+	        surname1.setLocation(80, 100); 
+	        c.add(surname1); 
 	        
 	        /* Surname TextField */
-	        Surname = new JTextField(); 
-	        Surname.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        Surname.setSize(190, 20); 
-	        Surname.setLocation(180, 100); 
-	        c.add(Surname); 
+	        surname2 = new JTextField(); 
+	        surname2.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        surname2.setSize(190, 20); 
+	        surname2.setLocation(180, 100); 
+	        c.add(surname2); 
 	   
 	        /* Lastname label */
-	        lastname = new JLabel("Lastname"); 
-	        lastname.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        lastname.setSize(120, 20); 
-	        lastname.setLocation(450, 100); 
-	        c.add(lastname); 
+	        lastname1 = new JLabel("Lastname"); 
+	        lastname1.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        lastname1.setSize(120, 20); 
+	        lastname1.setLocation(450, 100); 
+	        c.add(lastname1); 
 	        
 	        /* Lastname TextField */
-	        Lastname = new JTextField(); 
-	        Lastname.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        Lastname.setSize(190, 20); 
-	        Lastname.setLocation(550, 100); 
-	        c.add(Lastname); 
+	        lastname2 = new JTextField(); 
+	        lastname2.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        lastname2.setSize(190, 20); 
+	        lastname2.setLocation(550, 100); 
+	        c.add(lastname2); 
 	        
 	        /* Date of Birth method */
 	        dob = new JLabel("Date of Birth"); 
@@ -121,23 +121,23 @@ class Negative_Form extends JFrame implements ActionListener {
 	        dob.setLocation(80, 150); 
 	        c.add(dob); 
 	  
-	        date = new JComboBox(dates); 
-	        date.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        date.setSize(70, 20); 
-	        date.setLocation(220, 150); 
-	        c.add(date); 
+	        bdate = new JComboBox(dates); 
+	        bdate.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        bdate.setSize(70, 20); 
+	        bdate.setLocation(220, 150); 
+	        c.add(bdate); 
 	  
-	        month = new JComboBox(months); 
-	        month.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        month.setSize(80, 20); 
-	        month.setLocation(300, 150); 
-	        c.add(month); 
+	        bmonth = new JComboBox(months); 
+	        bmonth.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        bmonth.setSize(80, 20); 
+	        bmonth.setLocation(300, 150); 
+	        c.add(bmonth); 
 	  
-	        year = new JComboBox(years); 
-	        year.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        year.setSize(100, 20); 
-	        year.setLocation(400, 150); 
-	        c.add(year); 
+	        byear = new JComboBox(years); 
+	        byear.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        byear.setSize(100, 20); 
+	        byear.setLocation(400, 150); 
+	        c.add(byear); 
 	        
 	        /* Test date method */
 	        test_date = new JLabel("Testing Date"); 
@@ -146,23 +146,23 @@ class Negative_Form extends JFrame implements ActionListener {
 	        test_date.setLocation(80, 300); 
 	        c.add(test_date); 
 	  
-	        date = new JComboBox(dates); 
-	        date.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        date.setSize(70, 20); 
-	        date.setLocation(220, 300); 
-	        c.add(date); 
+	        tdate = new JComboBox(dates); 
+	        tdate.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        tdate.setSize(70, 20); 
+	        tdate.setLocation(220, 300); 
+	        c.add(tdate); 
 	  
-	        month = new JComboBox(months); 
-	        month.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        month.setSize(80, 20); 
-	        month.setLocation(300, 300); 
-	        c.add(month); 
+	        tmonth = new JComboBox(months); 
+	        tmonth.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        tmonth.setSize(80, 20); 
+	        tmonth.setLocation(300, 300); 
+	        c.add(tmonth); 
 	  
-	        year = new JComboBox(years); 
-	        year.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        year.setSize(100, 20); 
-	        year.setLocation(400, 300); 
-	        c.add(year); 
+	        tyear = new JComboBox(years); 
+	        tyear.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        tyear.setSize(100, 20); 
+	        tyear.setLocation(400, 300); 
+	        c.add(tyear); 
 	        
 	        /* AMKA  label method */
 	        amka = new JLabel("AMKA"); 
@@ -227,45 +227,34 @@ class Negative_Form extends JFrame implements ActionListener {
 	    } 
 	        public void actionPerformed(ActionEvent e) 
 		    { 
-		        
-		             
-		                String data1; 
-		                String data 
-		                    = "surname : "
-		                      + Surname.getText() + "\n"
-		                      + "lastname : "
-		                      + Lastname.getText() + "\n"; 
-		                
-		                String data2 
-		                    = "DOB : "
-		                      + (String)date.getSelectedItem() 
-		                      + "/" + (String)month.getSelectedItem() 
-		                      + "/" + (String)year.getSelectedItem() 
+	        	if (e.getSource() == sub) {   
+	        		
+		        	
+		        	String surname = surname2.getText();		                      
+		        	String lastname = lastname2.getText();        
+		        	String DOB = (String)bdate.getSelectedItem() 
+			                      + "/" + (String)bmonth.getSelectedItem() 
+			                      + "/" + (String)byear.getSelectedItem() 
+			                      + "\n"; 
+		        	String AMKA = Amka.getText(); 
+		        	String Hospital = Hosp.getText() + "\n";
+			        String TD = (String)tdate.getSelectedItem() 
+		                      + "/" + (String)tmonth.getSelectedItem() 
+		                      + "/" + (String)tyear.getSelectedItem() 
 		                      + "\n"; 
-		                
-		                String data3 
-	                    = "test_date : "
-	                      + (String)date.getSelectedItem() 
-	                      + "/" + (String)month.getSelectedItem() 
-	                      + "/" + (String)year.getSelectedItem() 
-	                      + "\n"; 
-		  
-		                 
-		                String data4;
-		                String Data
-		                    = "amka : "
-		                      + Amka.getText() + "\n";
-		                
-		                String data5 
-	                    = "Districts : "
-	                      + (String)District.getSelectedItem() 
-	                      + "\n"; 
-		                
-		                String data6
-		                	= "hosp : "
-		                      + Hosp.getText() + "\n";
-		                
-		                
-		             
+			        String Destrict = (String)District.getSelectedItem() + "\n";     
+			        System.out.println(surname + "\n" + lastname + "\n" +
+	    					DOB + "\n" + AMKA + "\n" +
+	    					Hospital + "\n" + TD + "\n" + District);
+			              
+			        System.out.println(" New member added ");
+			       
+		        	}
+		        	else if (e.getSource() == back) {
+		        		
+		        		First_page f = new First_page();
+		        		f.show();
+		        		dispose();
+		        	}
 		    }
 	    }
