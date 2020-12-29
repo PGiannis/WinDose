@@ -20,9 +20,9 @@ class Positive_Form extends JFrame implements ActionListener {
 	private JComboBox bmonth;
 	private JComboBox byear;
 	private JLabel test_date;
-	private JComboBox date;
-	private JComboBox month;
-	private JComboBox year;
+	private JComboBox tdate;
+	private JComboBox tmonth;
+	private JComboBox tyear;
 	private JLabel amka1;
 	private JTextField amka2;
 	private JLabel district1;
@@ -41,7 +41,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	private JComboBox exmonth;
 	private JComboBox exyear;
 	private JTextArea textArea;
-	private JButton sub;
+	private JButton next;
     private JButton back;
 	
 	private String dates[] 
@@ -137,23 +137,23 @@ class Positive_Form extends JFrame implements ActionListener {
 	        dob.setLocation(80, 150); 
 	        c.add(dob); 
 	  
-	        date = new JComboBox(dates); 
-	        date.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        date.setSize(70, 20); 
-	        date.setLocation(220, 150); 
-	        c.add(date); 
+	        bdate = new JComboBox(dates); 
+	        bdate.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        bdate.setSize(70, 20); 
+	        bdate.setLocation(220, 150); 
+	        c.add(bdate); 
 	  
-	        month = new JComboBox(months); 
-	        month.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        month.setSize(80, 20); 
-	        month.setLocation(300, 150); 
-	        c.add(month); 
+	        bmonth = new JComboBox(months); 
+	        bmonth.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        bmonth.setSize(80, 20); 
+	        bmonth.setLocation(300, 150); 
+	        c.add(bmonth); 
 	  
-	        year = new JComboBox(years); 
-	        year.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        year.setSize(100, 20); 
-	        year.setLocation(400, 150); 
-	        c.add(year); 
+	        byear = new JComboBox(years); 
+	        byear.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        byear.setSize(100, 20); 
+	        byear.setLocation(400, 150); 
+	        c.add(byear); 
 	        
 	        /* Test date method */
 	        test_date = new JLabel("Testing Date"); 
@@ -162,23 +162,23 @@ class Positive_Form extends JFrame implements ActionListener {
 	        test_date.setLocation(80, 300); 
 	        c.add(test_date); 
 	  
-	        date = new JComboBox(dates); 
-	        date.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        date.setSize(70, 20); 
-	        date.setLocation(220, 300); 
-	        c.add(date); 
+	        tdate = new JComboBox(dates); 
+	        tdate.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        tdate.setSize(70, 20); 
+	        tdate.setLocation(220, 300); 
+	        c.add(tdate); 
 	  
-	        month = new JComboBox(months); 
-	        month.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        month.setSize(80, 20); 
-	        month.setLocation(300, 300); 
-	        c.add(month); 
+	        tmonth = new JComboBox(months); 
+	        tmonth.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        tmonth.setSize(80, 20); 
+	        tmonth.setLocation(300, 300); 
+	        c.add(tmonth); 
 	  
-	        year = new JComboBox(years); 
-	        year.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        year.setSize(100, 20); 
-	        year.setLocation(400, 300); 
-	        c.add(year); 
+	        tyear = new JComboBox(years); 
+	        tyear.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        tyear.setSize(100, 20); 
+	        tyear.setLocation(400, 300); 
+	        c.add(tyear); 
 	        
 	        /* AMKA  label method */
 	        amka1 = new JLabel("AMKA"); 
@@ -278,31 +278,31 @@ class Positive_Form extends JFrame implements ActionListener {
 	        exit_date.setLocation(80, 400); 
 	        c.add(exit_date); 
 	  
-	        date = new JComboBox(dates); 
-	        date.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        date.setSize(70, 20); 
-	        date.setLocation(220, 400); 
-	        c.add(date); 
+	        exdate = new JComboBox(dates); 
+	        exdate.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        exdate.setSize(70, 20); 
+	        exdate.setLocation(220, 400); 
+	        c.add(exdate); 
 	  
-	        month = new JComboBox(months); 
-	        month.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        month.setSize(80, 20); 
-	        month.setLocation(300, 400); 
-	        c.add(month); 
+	        exmonth = new JComboBox(months); 
+	        exmonth.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        exmonth.setSize(80, 20); 
+	        exmonth.setLocation(300, 400); 
+	        c.add(exmonth); 
 	  
-	        year = new JComboBox(years); 
-	        year.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        year.setSize(100, 20); 
-	        year.setLocation(400, 400); 
-	        c.add(year); 
+	        exyear = new JComboBox(years); 
+	        exyear.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        exyear.setSize(100, 20); 
+	        exyear.setLocation(400, 400); 
+	        c.add(exyear); 
 	        
 	        /* Submit Button method */
-	        sub = new JButton("Submit"); 
-	        sub.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        sub.setSize(80, 20); 
-	        sub.setLocation(300, 500); 
-	        sub.addActionListener(this); 
-	        c.add(sub); 
+	        next = new JButton("Submit"); 
+	        next.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        next.setSize(80, 20); 
+	        next.setLocation(300, 500); 
+	        next.addActionListener(this); 
+	        c.add(next); 
 	        
 	        /* Back button method */
 	        back = new JButton("Back"); 
@@ -318,10 +318,58 @@ class Positive_Form extends JFrame implements ActionListener {
 	        public void actionPerformed(ActionEvent e) 
 		    { 
 		        
-		      String surname =  surname2.getText(); 
-		      String lastname =  surname2.getText();
-		      
-		               
+	        	if (e.getSource() == back) {
+			    	  
+			    	  First_page f  = new First_page();
+			    	  f.show();
+			    	  dispose();
+			      }
+			      else if (e.getSource() == next) {
+			    	  Contacts c = new Contacts();
+			    	 c.show();
+			    	  dispose();
+			    	  
+			    	  String surname = surname2.getText();		                      
+			        	String lastname = lastname2.getText();        
+			        	String DOB = (String)bdate.getSelectedItem() 
+				                      + "/" + (String)bmonth.getSelectedItem() 
+				                      + "/" + (String)byear.getSelectedItem() 
+				                      + "\n"; 
+			        	String AMKA = amka2.getText(); 
+			        	String Hospital = hosp2.getText() + "\n";
+				        
+				        String Destrict = (String)district2.getSelectedItem() + "\n";
+				        String symptoms;
+				        if (yes.isSelected()) {
+				        	symptoms = "Yes";
+				        	
+				        } else {
+				        	symptoms = "No";
+				        }
+				        String ecu_needed;
+				        if (yes.isSelected()) {
+				        	ecu_needed = "Yes";
+				        	
+				        } else {
+				        	ecu_needed = "No";
+				        }
+				        String TD = (String)tdate.getSelectedItem() 
+			                      + "/" + (String)tmonth.getSelectedItem() 
+			                      + "/" + (String)tyear.getSelectedItem() 
+			                      + "\n"; 
+				        String destrict = (String)district2.getSelectedItem();
+				        String ex_date = (String)exdate.getSelectedItem() 
+			                      + "/" + (String)exmonth.getSelectedItem() 
+			                      + "/" + (String)exyear.getSelectedItem() 
+			                      + "\n"; 
+				        System.out.println(surname + "\n" + lastname + "\n" +
+				        					DOB + "\n" + AMKA + "\n" +
+				        					Hospital + "\n" + Destrict + 
+				        					"\n" + symptoms + "\n" + ecu_needed +
+				        					"\n" + TD + "\n" + district2 + "\n" +
+				        					ex_date);
+				        					
+			      }
 		             
 		    }
 	    }

@@ -242,6 +242,22 @@ class Contacts extends JFrame implements ActionListener {
 	    } 
 	        public void actionPerformed(ActionEvent e) 
 		    { 
-		    	
+	        	if (e.getSource() == sub) {
+		    		
+		    		String contact1 = Contact1.getText();
+		    		String contact2 = Contact2.getText();
+		    		String contact3 = Contact3.getText();
+		    		String contact4 = Contact4.getText();
+		    		String contact5 = Contact5.getText();
+		    		String contact6 = Contact5.getText();
+		    		
+		    		System.out.println(" New member added ");
+		    		
+		    	} else if (e.getSource() == back){
+		    		Positive_Form f = new Positive_Form();
+	        		f.show();
+	        		dispose();
+		    		
+		    	}	
 		    }
 	    }
