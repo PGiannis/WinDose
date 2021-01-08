@@ -5,12 +5,18 @@ import java.util.HashMap;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -27,6 +33,12 @@ public class PieChartPanel extends Pane{
 		VBox vbox3 = new VBox();//	4)sex
 		VBox vbox4 = new VBox();//	5)deaths
 		VBox vbox5 = new VBox();//	6)ICU
+		TextField textf = new TextField();
+		textf.setPromptText("Type your age");
+		Button b = new Button("Search");
+		vbox2.getChildren().add(textf);
+		vbox2.getChildren().add(b);
+		
 		
 		
 		//area
@@ -261,17 +273,44 @@ public class PieChartPanel extends Pane{
 							} else if (vbox5.getChildren().size() > 1) {
 								vbox5.getChildren().remove(1);
 							}
-							vbox.getChildren().add(PieChartPanel.percentageOfPositivesPerAge());
+					/*		vbox.getChildren().add(PieChartPanel.percentageOfPositivesPerAge());
 							break;
-													
-/*							vbox2.setPadding(new Insets(10, 10, 10, 10));
+							*/
+							
+							textf.setPromptText("Type your age");
+							Button b = new Button("Search");
+							b.setOnAction(new EventHandler<ActionEvent>() {
+
+								@Override
+								public void handle(ActionEvent event) {
+									if (textf.getText().isEmpty()) {
+										Alert a = new Alert(AlertType.ERROR, "Type an age", ButtonType.CLOSE);
+										a.setContentText("Please type an age");
+										a.show();	
+									} else {
+										if (vbox.getChildren().size() > 2) {
+											vbox.getChildren().remove(2);
+										}
+										vbox.getChildren().add(PieChartPanel.percentageOfPositivesPerAge(Integer.parseInt(textf.getText())));
+					
+									}
+								}
+								
+							});
+							
+							
+							
+							//vbox2.setPadding(new Insets(10, 10, 10, 10));
 							HBox hbox2 = new HBox();
 							hbox2.setPadding(new Insets(5, 140, 5, 140));
-							hbox2.getChildren().add(comboBoxAge);
-							vbox2.getChildren().add(hbox2);							
+							hbox2.getChildren().add(textf);
+							hbox2.getChildren().add(b);
+							
+							vbox2.getChildren().add(hbox2);
+							
 							vbox.getChildren().add(vbox2);
 							break;
-*/
+							
 						case 3://	sex
 							
 							if (vbox.getChildren().size() > 1) {
@@ -432,12 +471,13 @@ public class PieChartPanel extends Pane{
 	
 	
 	
-	public static PieChart percentageOfPositivesPerAge() {
+	public static PieChart percentageOfPositivesPerAge(int ageDB) {
 		Statistics stat = new Statistics();
-		HashMap<String, Integer> temp = stat.percentageOfPositivesPerSex();
+		HashMap<String, Integer> temp = stat.percentageOfPositivesPerAge(ageDB);
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-				new PieChart.Data("0-9", temp.get("0-9")),
-				new PieChart.Data("10-19", temp.get("10-19"))//,
+				
+				new PieChart.Data("Selected Age", temp.get("Selected Age")),
+				new PieChart.Data("Total", temp.get("Total"))//,
 			//	new PieChart.Data("20-29", temp.get("20-29")),
 			//	new PieChart.Data("30-39", temp.get("30-39")),
 			//	new PieChart.Data("40-49", temp.get("40-49")),
