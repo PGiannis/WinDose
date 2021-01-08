@@ -25,13 +25,12 @@ public class Statistics {
 		temp.put("Negatives in selected area", 60);
 		return temp;
 		
-		
 	}
 	
 	public HashMap<String, Integer> percentageOfPositivesPerAge(int ageDB) {
 		
 		
-		// DB connection 
+		// DB connection (να αλλάξουμε και τις αντίστοιχες τιμές που έχω βάλλει για να τρέχουν) 
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
 		temp.put("Selected Age", ageDB);
 		temp.put("Total", 20);

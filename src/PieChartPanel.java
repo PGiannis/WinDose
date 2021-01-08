@@ -32,7 +32,7 @@ public class PieChartPanel extends Pane{
 		VBox vbox2 = new VBox();//	3)ages
 		VBox vbox3 = new VBox();//	4)sex
 		VBox vbox4 = new VBox();//	5)deaths
-		VBox vbox5 = new VBox();//	6)ICU
+		VBox vbox5 = new VBox();//	6)ICU 
 		TextField textf = new TextField();
 		textf.setPromptText("Type your age");
 		Button b = new Button("Search");
@@ -60,7 +60,7 @@ public class PieChartPanel extends Pane{
 			@Override
 			public void handle(Event event) {
 				int selectedIndex = comboBoxArea.getSelectionModel().getSelectedIndex();
-				//System.out.println("Selection made: [" + selectedIndex + "] ");
+				
 				switch(selectedIndex) {
 					case 0:
 						if (vbox1.getChildren().size() > 1) {
