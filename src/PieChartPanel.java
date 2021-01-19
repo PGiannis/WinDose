@@ -40,7 +40,6 @@ public class PieChartPanel extends Pane{
 		vbox2.getChildren().add(b);
 		
 		
-		
 		//area
 		ObservableList<String> areas = 
 			    FXCollections.observableArrayList(
