@@ -7,7 +7,6 @@ import javafx.scene.Group;
  
 public class PieChartCovid extends Application {
  
-	
     @Override public void start(Stage stage) {
         Scene scene = new Scene(new Group());
         stage.setTitle("Statistics"); //title of window 
