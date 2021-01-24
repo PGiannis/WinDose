@@ -7,13 +7,13 @@ public class PatientDAO {
 		
 	
 	/**
-	 * Search patient by id
+	 * Search patient by AMKA
 	 * 
-	 * @param id, int
+	 * @param AMKA, int
 	 * @return Patient, the Patient object
 	 * @throws Exception, if patient not found
 	 */
-	public Informations findPatient(int id) throws Exception {
+	public Informations findPatient(int AMKA) throws Exception {
 		
 
 		
@@ -21,12 +21,12 @@ public class PatientDAO {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sqlQuery = "SELECT * FROM patients WHERE id=?";
+		String sqlQuery = "SELECT * FROM patients WHERE AMKA=?";
 
 			try {
 				con = db.getConnection();
 				stmt = con.prepareStatement(sqlQuery);
-				stmt.setString(1 , id);
+				stmt.setString(1 , AMKA);
 
 				rs = stmt.executeQuery();
 
@@ -34,11 +34,11 @@ public class PatientDAO {
 					rs.close();
 					stmt.close();
 					db.close();
-						throw new Exception ("Patient with id: "
-						+ id + " not found");
+						throw new Exception ("Patient with AMKA: "
+						+ AMKA + " not found");
 				}
 
-					Patient patient = new Patient(rs.getString("name"), rs.getString("surname"), rs.getString("positive"), rs.getString ("negative"), rs.getString("gender"), rs.getString("Location"), rs.getString("State"));
+					Patient patient = new Patient(rs.getString("First_Name"), rs.getString("Last_Name"), rs.getString("positive"), rs.getString ("negative"), rs.getString("Gender"), rs.getString("Location"), rs.getString("State"));
 
 					rs.close();
 					stmt.close();
@@ -64,14 +64,14 @@ public class PatientDAO {
 	 * @param patient, Patient
 	 * @throws Exception, if encounter any error.
 	 */
-	public void register(Patient patient) throws Exception {
+	public voAMKA register(Patient patient) throws Exception {
 			
 
 		
 		DB db = new DB();
 		Connection con = null;
 		PreparedStatement stmt = null;
-		String checkSql = "SELECT * FROM patients WHERE id = ?";
+		String checkSql = "SELECT * FROM patients WHERE AMKA = ?";
 		String sql = "UPDATE patient(State) VALUES (?);";
 
 		try {
@@ -80,13 +80,13 @@ public class PatientDAO {
 
 			stmt = con.prepareStatement(checkSql);
 
-			stmt.setString(1 ,patient.getId());
+			stmt.setString(1 ,patient.getAMKA());
 			ResultSet rs = stmt.executeQuery();
 
 			            if (rs.next()) {
 			                rs.close();
 			                stmt.close();
-			                throw new Exception("There is not patient's id");
+			                throw new Exception("There is not patient's AMKA");
 			            }
 
             			rs.close();
