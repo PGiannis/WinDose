@@ -1,18 +1,26 @@
-
+package src;
 
 import javax.swing.*; 
+
 import java.awt.*; 
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 
-class Positive_Form extends JFrame implements ActionListener {
+
+class Positive_Form_example extends JFrame implements ActionListener {
 	
 	/* Class variables*/
 	
 	private Container c;
 	private JLabel title;
-	private JLabel surname1;
-	private JTextField surname2;
+	private JLabel firstName1;
+	private JTextField firstName2;
 	private JLabel lastname1;
 	private JTextField lastname2;
 	private JLabel dob;
@@ -27,7 +35,9 @@ class Positive_Form extends JFrame implements ActionListener {
 	private JTextField amka2;
 	private JLabel district1;
 	private JComboBox district2;
-	private JLabel hosp1;
+	private JLabel gender;
+	private JRadioButton male; 
+    private JRadioButton female;
 	private JTextField hosp2;
 	private JLabel symptoms;
 	private JRadioButton yes; 
@@ -40,7 +50,6 @@ class Positive_Form extends JFrame implements ActionListener {
 	private JComboBox exdate;
 	private JComboBox exmonth;
 	private JComboBox exyear;
-	private JTextArea textArea;
 	private JButton next;
     private JButton back;
 	
@@ -53,9 +62,9 @@ class Positive_Form extends JFrame implements ActionListener {
 	            "26", "27", "28", "29", "30", 
 	            "31" }; 
 	    private String months[] 
-	        = { "-//-", "Jan", "feb", "Mar", "Apr", 
-	            "May", "Jun", "July", "Aug", 
-	            "Sep", "Oct", "Nov", "Dec" }; 
+	        = { "-//-", "1", "2", "3", "4", 
+	            "5", "6", "7", "8", 
+	            "9", "10", "11", "12" }; 
 	    private String years[]
 	        = { "-//-", "1979", "1980", "1981", "1982",
 	        	"1983", "1984", "1985", "1986",
@@ -85,7 +94,7 @@ class Positive_Form extends JFrame implements ActionListener {
 	    				"Περιφέρεια Πελοποννήσου",
 	    				"Περιφέρεια Στερεάς Ελλάδος" };	    
 	   
-	    public Positive_Form() {
+	    public Positive_Form_example()	{
 	    	
 	    	setTitle("Positve Form"); 
 	        setBounds(300, 90, 900, 600); 
@@ -102,22 +111,22 @@ class Positive_Form extends JFrame implements ActionListener {
 	        title.setLocation(300, 30); 
 	        c.add(title); 
 	  
-	        /* Surname label */
-	        surname1 = new JLabel("Surname"); 
-	        surname1.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        surname1.setSize(120, 20); 
-	        surname1.setLocation(80, 100); 
-	        c.add(surname1); 
+	        /* firstName label */
+	        firstName1 = new JLabel("First Name"); 
+	        firstName1.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        firstName1.setSize(120, 20); 
+	        firstName1.setLocation(80, 100); 
+	        c.add(firstName1); 
 	        
-	        /* Surname TextField */
-	        surname2 = new JTextField(); 
-	        surname2.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        surname2.setSize(190, 20); 
-	        surname2.setLocation(180, 100); 
-	        c.add(surname2); 
+	        /* firstName TextField */
+	        firstName2 = new JTextField(); 
+	        firstName2.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        firstName2.setSize(190, 20); 
+	        firstName2.setLocation(180, 100); 
+	        c.add(firstName2); 
 	   
 	        /* Lastname label */
-	        lastname1 = new JLabel("Lastname"); 
+	        lastname1 = new JLabel("Last Name"); 
 	        lastname1.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        lastname1.setSize(120, 20); 
 	        lastname1.setLocation(450, 100); 
@@ -207,26 +216,37 @@ class Positive_Form extends JFrame implements ActionListener {
 	        district2.setLocation(280, 350); 
 	        c.add(district2); 
 	        
-	        /* Hospital label method */
-	        hosp1 = new JLabel("Hospital"); 
-	        hosp1.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        hosp1.setSize(100, 20); 
-	        hosp1.setLocation(450, 200); 
-	        c.add(hosp1);
+	        /* Symptoms method */
+	        gender = new JLabel("Gender"); 
+	        gender.setFont(new Font("Arial", Font.PLAIN, 20)); 
+	        gender.setSize(100, 20); 
+	        gender.setLocation(450, 200); 
+	        c.add(gender); 
+	  
+	        male = new JRadioButton("Male"); 
+	        male.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        male.setSelected(true); 
+	        male.setSize(75, 20); 
+	        male.setLocation(580, 200); 
+	        c.add(male); 
+	  
+	        female = new JRadioButton("Female"); 
+	        female.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        female.setSelected(false); 
+	        female.setSize(160, 20); 
+	        female.setLocation(650, 200); 
+	        c.add(female);
 	        
-	        /* Hospital TextField method */
-	        hosp2 = new JTextField(); 
-	        hosp2.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        hosp2.setSize(190, 20); 
-	        hosp2.setLocation(550, 200); 
-	        c.add(hosp2); 
+	        gengp = new ButtonGroup(); 
+	        gengp.add(male); 
+	        gengp.add(female);
 	       
 	        /* Symptoms method */
 	        symptoms = new JLabel("Symptoms"); 
 	        symptoms.setFont(new Font("Arial", Font.PLAIN, 20)); 
 	        symptoms.setSize(100, 20); 
 	        symptoms.setLocation(80, 250); 
-	        c.add(symptoms); 
+	        c.add(symptoms);
 	  
 	        yes = new JRadioButton("Yes"); 
 	        yes.setFont(new Font("Arial", Font.PLAIN, 15)); 
@@ -253,55 +273,32 @@ class Positive_Form extends JFrame implements ActionListener {
 	        ecu_needed.setLocation(450, 250); 
 	        c.add(ecu_needed); 
 	  
-	        yes = new JRadioButton("Yes"); 
-	        yes.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        yes.setSelected(true); 
-	        yes.setSize(75, 20); 
-	        yes.setLocation(580, 250); 
-	        c.add(yes); 
+	        Yes = new JRadioButton("Yes"); 
+	        Yes.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        Yes.setSelected(true); 
+	        Yes.setSize(75, 20); 
+	        Yes.setLocation(580, 250); 
+	        c.add(Yes); 
 	  
-	        no = new JRadioButton("No"); 
-	        no.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        no.setSelected(false); 
-	        no.setSize(80, 20); 
-	        no.setLocation(650, 250); 
-	        c.add(no); 
+	        No = new JRadioButton("No"); 
+	        No.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        No.setSelected(false); 
+	        No.setSize(80, 20); 
+	        No.setLocation(650, 250); 
+	        c.add(No); 
 	        
 	        gengp = new ButtonGroup(); 
-	        gengp.add(yes); 
-	        gengp.add(no); 
+	        gengp.add(Yes); 
+	        gengp.add(No); 
 	        
-	        /* Exit date method */
-	        exit_date = new JLabel("Exit Date"); 
-	        exit_date.setFont(new Font("Arial", Font.PLAIN, 20)); 
-	        exit_date.setSize(100, 20); 
-	        exit_date.setLocation(80, 400); 
-	        c.add(exit_date); 
-	  
-	        exdate = new JComboBox(dates); 
-	        exdate.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        exdate.setSize(70, 20); 
-	        exdate.setLocation(220, 400); 
-	        c.add(exdate); 
-	  
-	        exmonth = new JComboBox(months); 
-	        exmonth.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        exmonth.setSize(80, 20); 
-	        exmonth.setLocation(300, 400); 
-	        c.add(exmonth); 
-	  
-	        exyear = new JComboBox(years); 
-	        exyear.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        exyear.setSize(100, 20); 
-	        exyear.setLocation(400, 400); 
-	        c.add(exyear); 
+	        
 	        
 	        /* Submit Button method */
-	        next = new JButton("Submit"); 
+	        next = new JButton("Next"); 
 	        next.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        next.setSize(80, 20); 
 	        next.setLocation(300, 500); 
-	        next.addActionListener(this); 
+	        next.addActionListener(this);
 	        c.add(next); 
 	        
 	        /* Back button method */
@@ -318,58 +315,72 @@ class Positive_Form extends JFrame implements ActionListener {
 	        public void actionPerformed(ActionEvent e) 
 		    { 
 		        
-	        	if (e.getSource() == back) {
-			    	  
-			    	  First_page f  = new First_page();
-			    	  f.show();
-			    	  dispose();
-			      }
-			      else if (e.getSource() == next) {
-			    	  Contacts c = new Contacts();
-			    	 c.show();
-			    	  dispose();
-			    	  
-			    	  String surname = surname2.getText();		                      
-			        	String lastname = lastname2.getText();        
-			        	String DOB = (String)bdate.getSelectedItem() 
-				                      + "/" + (String)bmonth.getSelectedItem() 
-				                      + "/" + (String)byear.getSelectedItem() 
-				                      + "\n"; 
-			        	String AMKA = amka2.getText(); 
-			        	String Hospital = hosp2.getText() + "\n";
-				        
-				        String Destrict = (String)district2.getSelectedItem() + "\n";
-				        String symptoms;
-				        if (yes.isSelected()) {
-				        	symptoms = "Yes";
-				        	
-				        } else {
-				        	symptoms = "No";
-				        }
-				        String ecu_needed;
-				        if (yes.isSelected()) {
-				        	ecu_needed = "Yes";
-				        	
-				        } else {
-				        	ecu_needed = "No";
-				        }
-				        String TD = (String)tdate.getSelectedItem() 
-			                      + "/" + (String)tmonth.getSelectedItem() 
-			                      + "/" + (String)tyear.getSelectedItem() 
-			                      + "\n"; 
-				        String destrict = (String)district2.getSelectedItem();
-				        String ex_date = (String)exdate.getSelectedItem() 
-			                      + "/" + (String)exmonth.getSelectedItem() 
-			                      + "/" + (String)exyear.getSelectedItem() 
-			                      + "\n"; 
-				        System.out.println(surname + "\n" + lastname + "\n" +
-				        					DOB + "\n" + AMKA + "\n" +
-				        					Hospital + "\n" + Destrict + 
-				        					"\n" + symptoms + "\n" + ecu_needed +
-				        					"\n" + TD + "\n" + district2 + "\n" +
-				        					ex_date);
-				        					
-			      }
-		             
+		      if (e.getSource() == back) {
+		    	  
+		    	  First_page_example f  = new First_page_example();
+		    	  f.show();
+		    	  dispose();
+		      }
+		      else if (e.getSource() == next) {
+		    	  
+		    	  
+		    	  String firstName = firstName2.getText();		                      
+		        	String lastname = lastname2.getText();        
+		        	Date DOB = null;
+
+					DOB = Date.valueOf((String)byear.getSelectedItem() 
+					              + "-" + (String)bmonth.getSelectedItem() 
+					              + "-" + (String)bdate.getSelectedItem());
+		        	int AMKA = Integer.parseInt(amka2.getText()); 
+			        
+			        String Destrict = (String)district2.getSelectedItem() + "\n";
+			        Boolean symptoms = false;
+			        if (yes.isSelected()) {
+			        	symptoms = true;
+			        	
+			        } else {
+			        	symptoms = false;
+			        }
+			        boolean ecu_needed = false;
+			        if (Yes.isSelected()) {
+			        	ecu_needed = true;
+			        	
+			        } else {
+			        	ecu_needed = false;
+			        }
+			        String gender = "";
+			        if (male.isSelected()) {
+			        	gender = "M";
+			        	
+			        } else if (female.isSelected()){
+			        	gender = "F";
+			        }
+			        
+
+			        Date TD = Date.valueOf(new String(tyear.getSelectedItem() 
+				              + "-" + (String)tmonth.getSelectedItem() 
+				              + "-" + (String)tdate.getSelectedItem()));
+			        
+			        String destrict = (String)district2.getSelectedItem();
+			        
+			        
+			        Patient p = new Patient(AMKA, firstName, lastname, Destrict, TD, DOB, gender, true, symptoms, ecu_needed, true);
+			        
+			        
+			        Contacts c = new Contacts(p);
+			    	c.show();
+			    	dispose();
+			        
+			        System.out.println(firstName + "\n" + lastname + "\n" +
+			        					DOB + "\n" + AMKA + "\n" + "\n" + Destrict + 
+			        					"\n" + symptoms + "\n" + ecu_needed +
+			        					"\n" + TD + "\n" + district2 + "\n");
+			        					
+		      }
 		    }
-	    }
+	        
+}
+			        
+		             
+		    
+	    
