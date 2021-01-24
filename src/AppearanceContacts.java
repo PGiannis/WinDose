@@ -29,11 +29,11 @@ import net.proteanit.sql.DbUtils;
 
 
 public class AppearanceContacts extends JFrame {
-	private JFrame frame;
+	private JPanel contentPane;
 	private JTable table;	
 	
 	
-	Connection connection = null;
+	Connection connection = null;	
 	public AppearanceContacts() {
 		/*connection="name of db class";*/
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
