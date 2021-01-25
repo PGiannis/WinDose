@@ -4,16 +4,31 @@ import java.util.List;
 
 
 public class PatientDAO {
+	/**
+	 * This method returns a List with all Users
+	 * 
+	 * @return List<User>
+	 */
+	public List<Patient getPatients() {
+
+		List<Patient> patients = new ArrayList<Patient>();
 		
+		// adding some users for the sake of the example
+		patients.add(new Patient("John", "Doe", "jdoe@somewhere.com", "jdoe", "1111"));
+		patients.add(new Patient("Mary", "Smith", "msmith@somewhere.com", "msmith",  "1111"));
+		
+		return patients;
+
+	} //End of getUsers
 	
 	/**
 	 * Search patient by AMKA
 	 * 
-	 * @param AMKA, int
+	 * @param AMKA
 	 * @return Patient, the Patient object
 	 * @throws Exception, if patient not found
 	 */
-	public Informations findPatient(int AMKA) throws Exception {
+	public Patient findPatient(int AMKA) throws Exception {
 		
 
 		
@@ -26,7 +41,7 @@ public class PatientDAO {
 			try {
 				con = db.getConnection();
 				stmt = con.prepareStatement(sqlQuery);
-				stmt.setString(1 , AMKA);
+				stmt.setInt(1 , AMKA);
 
 				rs = stmt.executeQuery();
 
@@ -38,7 +53,7 @@ public class PatientDAO {
 						+ AMKA + " not found");
 				}
 
-					Patient patient = new Patient(rs.getString("First_Name"), rs.getString("Last_Name"), rs.getString("positive"), rs.getString ("negative"), rs.getString("Gender"), rs.getString("Location"), rs.getString("State"));
+					Patient patient = new Patient(rs.getString("First_Name"), rs.getString("Last_Name"), rs.getString("Gender"), rs.getInt ("Age"), rs.getBoolean("Positive"), rs.getBoolean("Symptoms"), rs.getBoolean("ECU"), rs.getBoolean("Alive"));
 
 					rs.close();
 					stmt.close();
@@ -64,7 +79,7 @@ public class PatientDAO {
 	 * @param patient, Patient
 	 * @throws Exception, if encounter any error.
 	 */
-	public voAMKA register(Patient patient) throws Exception {
+	public void updatePatient (Patient patient) throws Exception {
 			
 
 		
@@ -72,7 +87,7 @@ public class PatientDAO {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		String checkSql = "SELECT * FROM patients WHERE AMKA = ?";
-		String sql = "UPDATE patient(State) VALUES (?);";
+		String sql = "UPDATE patient(Symptoms, ECU, Alive) VALUES (?, ?, ?);";
 
 		try {
 
@@ -81,6 +96,7 @@ public class PatientDAO {
 			stmt = con.prepareStatement(checkSql);
 
 			stmt.setString(1 ,patient.getAMKA());
+			
 			ResultSet rs = stmt.executeQuery();
 
 			            if (rs.next()) {
@@ -93,8 +109,9 @@ public class PatientDAO {
 
 			stmt = con.prepareStatement(sql);
 
-			stmt.setString(1 ,patient.getState());
-			
+			stmt.setString(2 ,patient.getSymptoms());
+			stmt.setString(3 ,patient.getECU());
+			stmt.setString(4 ,patient.getAlive());
 
 			stmt.executeUpdate();
 
@@ -112,6 +129,6 @@ public class PatientDAO {
 						}
 			}
 		
-	}//end of register
+	}//end of updatePatient
 
 } //End of class
