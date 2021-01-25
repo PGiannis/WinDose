@@ -19,7 +19,7 @@ public class PatientDAO {
 		
 		return patients;
 
-	} //End of getUsers
+	} //End of getPatients
 	
 	/**
 	 * Search patient by AMKA
