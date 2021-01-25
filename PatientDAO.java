@@ -5,21 +5,48 @@ import java.util.List;
 
 public class PatientDAO {
 	/**
-	 * This method returns a List with all Users
+	 * This method returns a List with all Patients
 	 * 
-	 * @return List<User>
+	 * @return List<Patient>
 	 */
-	public List<Patient getPatients() {
+	public List<Patient> getPatients() throws Exception {
 
 		List<Patient> patients = new ArrayList<Patient>();
-		
-		// adding some users for the sake of the example
-		patients.add(new Patient("John", "Doe", "jdoe@somewhere.com", "jdoe", "1111"));
-		patients.add(new Patient("Mary", "Smith", "msmith@somewhere.com", "msmith",  "1111"));
-		
-		return patients;
+		Connection con = null;
+		 DB db = new DB();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		 String slcPatient = "SELECT * FROM Patients ;";
 
-	} //End of getPatients
+		try {
+			con = db.getConnection();
+			stmt = con.prepareStatement(slcPatient);
+			rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				patients.add(new Patient(rs.getInt("amka"), rs.getString("firstname"), rs.getString("lastname"),
+						rs.getString("district"), rs.getDate("testDate"),rs.getDate("dob"), rs.getString("gender"), rs.getBoolean("positive"),
+						rs.getBoolean("symptoms"), rs.getBoolean("ecu"), rs.getBoolean("alive")));
+			}
+			rs.close();
+			stmt.close();
+			db.close();
+			return patients;
+
+		} catch (SQLException e) {
+			throw new Exception(e.getMessage());
+			// handle the exception or/and print message
+		} finally {
+
+			try {
+				db.close();
+			} catch (Exception e) {
+				throw new Exception(e.getMessage());
+			}
+		}
+	}
+
+	 //End of getPatients
 	
 	/**
 	 * Search patient by AMKA
@@ -28,7 +55,7 @@ public class PatientDAO {
 	 * @return Patient, the Patient object
 	 * @throws Exception, if patient not found
 	 */
-	public Patient findPatient(int AMKA) throws Exception {
+	public Patient findPatient(int amka) throws Exception {
 		
 
 		
@@ -41,7 +68,7 @@ public class PatientDAO {
 			try {
 				con = db.getConnection();
 				stmt = con.prepareStatement(sqlQuery);
-				stmt.setInt(1 , AMKA);
+				stmt.setInt(1 , amka);
 
 				rs = stmt.executeQuery();
 
@@ -50,10 +77,12 @@ public class PatientDAO {
 					stmt.close();
 					db.close();
 						throw new Exception ("Patient with AMKA: "
-						+ AMKA + " not found");
+						+ amka + " not found");
 				}
 
-					Patient patient = new Patient(rs.getString("First_Name"), rs.getString("Last_Name"), rs.getString("Gender"), rs.getInt ("Age"), rs.getBoolean("Positive"), rs.getBoolean("Symptoms"), rs.getBoolean("ECU"), rs.getBoolean("Alive"));
+					Patient patient = new Patient(rs.getInt("amka"), rs.getString("firstname"), rs.getString("lastname"),
+							rs.getString("district"), rs.getDate("testDate"),rs.getDate("dob"), rs.getString("gender"), rs.getBoolean("positive"),
+							rs.getBoolean("symptoms"), rs.getBoolean("ecu"), rs.getBoolean("alive"));
 
 					rs.close();
 					stmt.close();
@@ -95,7 +124,7 @@ public class PatientDAO {
 
 			stmt = con.prepareStatement(checkSql);
 
-			stmt.setString(1 ,patient.getAMKA());
+			stmt.setString(1 ,patient.getAmka());
 			
 			ResultSet rs = stmt.executeQuery();
 
@@ -109,9 +138,9 @@ public class PatientDAO {
 
 			stmt = con.prepareStatement(sql);
 
-			stmt.setString(2 ,patient.getSymptoms());
-			stmt.setString(3 ,patient.getECU());
-			stmt.setString(4 ,patient.getAlive());
+			stmt.setString(2 ,patient.isSymptoms());
+			stmt.setString(3 ,patient.isEcu());
+			stmt.setString(4 ,patient.isAlive());
 
 			stmt.executeUpdate();
 
