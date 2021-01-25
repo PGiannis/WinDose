@@ -124,7 +124,7 @@ public class PatientDAO {
 
 			stmt = con.prepareStatement(checkSql);
 
-			stmt.setString(1 ,patient.getAmka());
+			stmt.setInt(1 ,patient.getAmka());
 			
 			ResultSet rs = stmt.executeQuery();
 
@@ -138,9 +138,9 @@ public class PatientDAO {
 
 			stmt = con.prepareStatement(sql);
 
-			stmt.setString(2 ,patient.isSymptoms());
-			stmt.setString(3 ,patient.isEcu());
-			stmt.setString(4 ,patient.isAlive());
+			stmt.setBoolean(2 ,patient.isSymptoms());
+			stmt.setBoolean(3 ,patient.isEcu());
+			stmt.setBoolean(4 ,patient.isAlive());
 
 			stmt.executeUpdate();
 
