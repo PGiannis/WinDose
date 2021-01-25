@@ -33,9 +33,12 @@ public class AppearanceContacts extends JFrame {
 	private JTable table;	
 	
 	
+	
+	
+	
 	Connection connection = null;	
 	public AppearanceContacts() {
-		/*connection="name of db class";*/
+		connection=DB.getConnection();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 548, 453);
 		contentPane = new JPanel ();
@@ -45,19 +48,29 @@ public class AppearanceContacts extends JFrame {
 		
 		JButton btnLoadTable = new JButton ("Load contacts Data");
 		btnLoadTable.addActionListener(new ActionListener); {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0)  {
 				try {
+					PreparedStatement pst = null;
 					String query="select * from Contacts";
-					PrepareStatement pst = connection.prepareStatement(query);
+					pst = connection.prepareStatement(query);
 					ResultSet rs=pst.executeQuery();
-					table.setModel(DbUtils);
+					table.setModel(DbUtils.resultSetToTableModel(rs));
 					
-				}catch() {
+				}catch(Exception e) {
+					e.printStackTrace();
 					
 				}
 			}
-		}
+		};
+		btnLoadTable.setBounds(247, 23, 168, 23);
+		contentPane.add(btnLoadTable);
 		
-	}
-	
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(151, 81, 371, 295);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		
+}
 }
