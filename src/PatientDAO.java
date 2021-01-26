@@ -2,7 +2,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class PatientDAO {
 	/**
 	 * This method returns a List with all Patients
@@ -13,20 +12,21 @@ public class PatientDAO {
 
 		List<Patient> patients = new ArrayList<Patient>();
 		Connection con = null;
-		 DB db = new DB();
+		DB db = new DB();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		 String slcPatient = "SELECT * FROM Patients ;";
+		String slcPatient = "SELECT * FROM Patients ;";
 
 		try {
 			con = db.getConnection();
 			stmt = con.prepareStatement(slcPatient);
 			rs = stmt.executeQuery();
-			
+
 			while (rs.next()) {
 				patients.add(new Patient(rs.getInt("amka"), rs.getString("firstname"), rs.getString("lastname"),
-						rs.getString("district"), rs.getDate("testDate"),rs.getDate("dob"), rs.getString("gender"), rs.getBoolean("positive"),
-						rs.getBoolean("symptoms"), rs.getBoolean("ecu"), rs.getBoolean("alive")));
+						rs.getString("district"), rs.getDate("testDate"), rs.getDate("dob"), rs.getString("gender"),
+						rs.getBoolean("positive"), rs.getBoolean("symptoms"), rs.getBoolean("ecu"),
+						rs.getBoolean("alive")));
 			}
 			rs.close();
 			stmt.close();
@@ -46,8 +46,8 @@ public class PatientDAO {
 		}
 	}
 
-	 //End of getPatients
-	
+	// End of getPatients
+
 	/**
 	 * Search patient by AMKA
 	 * 
@@ -56,62 +56,56 @@ public class PatientDAO {
 	 * @throws Exception, if patient not found
 	 */
 	public Patient findPatient(int amka) throws Exception {
-		
 
-		
 		DB db = new DB();
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		String sqlQuery = "SELECT * FROM patients WHERE AMKA=?";
 
-			try {
-				con = db.getConnection();
-				stmt = con.prepareStatement(sqlQuery);
-				stmt.setInt(1 , amka);
+		try {
+			con = db.getConnection();
+			stmt = con.prepareStatement(sqlQuery);
+			stmt.setInt(1, amka);
 
-				rs = stmt.executeQuery();
+			rs = stmt.executeQuery();
 
-				if (!rs.next()) {
-					rs.close();
-					stmt.close();
-					db.close();
-						throw new Exception ("Patient with AMKA: "
-						+ amka + " not found");
-				}
-
-					Patient patient = new Patient(rs.getInt("amka"), rs.getString("firstname"), rs.getString("lastname"),
-							rs.getString("district"), rs.getDate("testDate"),rs.getDate("dob"), rs.getString("gender"), rs.getBoolean("positive"),
-							rs.getBoolean("symptoms"), rs.getBoolean("ecu"), rs.getBoolean("alive"));
-
-					rs.close();
-					stmt.close();
-					db.close();
-
-					return patient;
-
-			} catch (Exception e) {
-				throw new Exception(e.getMessage());
-			} finally {
-				try {
-					db.close();
-				} catch (Exception e) {
-				}
+			if (!rs.next()) {
+				rs.close();
+				stmt.close();
+				db.close();
+				throw new Exception("Patient with AMKA: " + amka + " not found");
 			}
-		
-		
-	} //End of findPatient
-	
+
+			Patient patient = new Patient(rs.getInt("amka"), rs.getString("firstname"), rs.getString("lastname"),
+					rs.getString("district"), rs.getDate("testDate"), rs.getDate("dob"), rs.getString("gender"),
+					rs.getBoolean("positive"), rs.getBoolean("symptoms"), rs.getBoolean("ecu"), rs.getBoolean("alive"));
+
+			rs.close();
+			stmt.close();
+			db.close();
+
+			return patient;
+
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		} finally {
+			try {
+				db.close();
+			} catch (Exception e) {
+			}
+		}
+
+	} // End of findPatient
+
 	/**
 	 * Update a Patient.
 	 * 
 	 * @param patient, Patient
 	 * @throws Exception, if encounter any error.
 	 */
-	public void updatePatient (Patient patient) throws Exception {
-			
+	public void updatePatient(Patient patient) throws Exception {
 
-		
 		DB db = new DB();
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -124,40 +118,37 @@ public class PatientDAO {
 
 			stmt = con.prepareStatement(checkSql);
 
-			stmt.setInt(1 ,patient.getAmka());
-			
+			stmt.setInt(1, patient.getAmka());
+
 			ResultSet rs = stmt.executeQuery();
 
-			            if (rs.next()) {
-			                rs.close();
-			                stmt.close();
-			                throw new Exception("There is not patient's AMKA");
-			            }
+			if (rs.next()) {
+				rs.close();
+				stmt.close();
+				throw new Exception("There is not patient's AMKA");
+			}
 
-            			rs.close();
+			rs.close();
 
 			stmt = con.prepareStatement(sql);
 
-			stmt.setBoolean(2 ,patient.isSymptoms());
-			stmt.setBoolean(3 ,patient.isEcu());
-			stmt.setBoolean(4 ,patient.isAlive());
+			stmt.setBoolean(2, patient.isSymptoms());
+			stmt.setBoolean(3, patient.isEcu());
+			stmt.setBoolean(4, patient.isAlive());
 
 			stmt.executeUpdate();
 
 			stmt.close();
 
-
-
-
-		}catch (Exception e) {
-						throw new Exception(e.getMessage());
-					}finally {
-						try {
-							db.close();
-						}catch (Exception e) {
-						}
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		} finally {
+			try {
+				db.close();
+			} catch (Exception e) {
 			}
-		
-	}//end of updatePatient
+		}
 
-} //End of class
+	}// end of updatePatient
+
+} // End of class
