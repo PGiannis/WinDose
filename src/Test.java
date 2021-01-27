@@ -1,8 +1,10 @@
+package src;
+
 import javax.swing.*; 
 import java.awt.*; 
 import java.awt.event.*; 
 
-class First_page 
+class Test
 	extends JFrame
 	implements ActionListener {
 		
@@ -13,13 +15,13 @@ class First_page
 	    private JRadioButton positive;
 	    private JRadioButton negative;
 	    private ButtonGroup gengp; 
-	    private JButton sub;
+	    private JButton next;
 	    private JButton back;
 	    private JTextArea tout; 
 	    private JLabel res; 
 	    private JTextArea resadd; 
 	    
-	    public First_page() {
+	    public Test() {
 	    	setTitle("Registration Form"); 
 	        setBounds(300, 90, 900, 600); 
 	        setDefaultCloseOperation(EXIT_ON_CLOSE); 
@@ -64,19 +66,19 @@ class First_page
 	        gengp.add(negative); 
 	        
 	        /* Submit button */
-	        sub = new JButton("Submit"); 
-	        sub.setFont(new Font("Arial", Font.PLAIN, 15)); 
-	        sub.setSize(80, 20); 
-	        sub.setLocation(80, 450); 
-	        sub.addActionListener(this); 
-	        c.add(sub); 
+	        next = new JButton("Next"); 
+	        next.setFont(new Font("Arial", Font.PLAIN, 15)); 
+	        next.setSize(80, 20); 
+	        next.setLocation(80, 450); 
+	        next.addActionListener(this); 
+	        c.add(next); 
 	        
 	        /* Back Button method */
 	        back = new JButton("Back"); 
 	        back.setFont(new Font("Arial", Font.PLAIN, 15)); 
 	        back.setSize(80, 20); 
 	        back.setLocation(200, 450); 
-	        back.addActionListener(this); 
+	        back.addActionListener(this);
 	        c.add(back); 
 	        
 	        tout = new JTextArea(); 
@@ -109,33 +111,44 @@ class First_page
 	    
 	    public void actionPerformed(ActionEvent e) 
 	    { 
-	        if (e.getSource() == sub) { 
-	            
-	                String data1; 
-	                
-	                if (positive.isSelected()) 
-	                    data1 = "Diagnosis : Positive" + "\n"; 
-	                else
-	                    data1 = "Diagnosis : Negative" + "\n"; 
-	                
-	               
-	                tout.setText(data1); 
-	                tout.setEditable(false); 
-	                res.setText("Registration Successfully.."); 
-	                
-	                    
-	  
-	                
-	        }
-	        else if (e.getSource() == back) { 
-	        	tout.setText(""); 
-                resadd.setText(""); 
-                res.setText("Coming Soon!"); 
-	    } 
-	} 
-	  
+	      
+	    	
+	    
+	    if (e.getSource() == next) {
+	    
+	    if (positive.isSelected()) {
+	    	Positive_Form p = new Positive_Form();
+	       	
+			p.show();
+		        
+			dispose();
+	    	
+	    } else {
+	    	Negative_Form n = new Negative_Form();
+	       	
+			n.show();
+		        
+			dispose();
+	    }
+	    
+	    } else if (e.getSource() == back) {
+	    	
+	    	Home p = new Home();
+	       	
+			p.show();
+		        
+			dispose();
+	    }
+else if (e.getSource() == back) {
+	    	
+	    	Home p = new Home();
+	       	
+			p.show();
+		        
+			dispose();
+		}
+	    }
 }
-
 
  
    
