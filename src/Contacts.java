@@ -303,11 +303,11 @@ class Contacts extends JFrame implements ActionListener {
 					}
 	    		}
 	    		
-	    		System.out.println(" New member added ");
+	    		JOptionPane.showMessageDialog(sub, "You have successfully registered");
 	    		
 	    		
 	    	} else if (e.getSource() == back){
-	    		Positive_Form_example f = new Positive_Form_example();
+	    		Positive_Form f = new Positive_Form();
         		f.show();
         		dispose();
 	    		
