@@ -6,13 +6,15 @@ import javafx.scene.chart.PieChart;
 
 public class Statistics {
 	
+	final static int ECUNumber = 400;
+	
 	public HashMap<String, Integer> percentageOfPositivesNegatives() {
 		
 		
 		// DB connection
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Positives", 200);
-		temp.put("Negatives", 100);
+		temp.put("Positives", JDBCtry.poscount());
+		temp.put("Negatives", JDBCtry.negcount());
 		return temp;
 	}
 	
@@ -30,10 +32,10 @@ public class Statistics {
 	public HashMap<String, Integer> percentageOfPositivesPerAge(int ageDB) {
 		
 		
-		// DB connection (να αλλάξουμε και τις αντίστοιχες τιμές που έχω βάλλει για να τρέχουν) 
+		// DB connection  
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
 		temp.put("Selected Age", ageDB);
-		temp.put("Total", 20);
+		temp.put("Total", JDBCtry.poscount());
 	//	temp.put("20-29", 20);
 	//	temp.put("30-39", 20);
 	//	temp.put("40-49", 20);
@@ -44,13 +46,13 @@ public class Statistics {
 		
 	}
 	
-	public HashMap<String, Integer> percentageOfPositivesPerSex() {
+	public HashMap<String, Integer> percentageOfPositivesPerGender() {
 		
 		
 		// DB connection
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Women", 50);
-		temp.put("Men", 50);
+		temp.put("Women", JDBCtry.FemaleCount());
+		temp.put("Men", JDBCtry.MaleCount());
 		return temp;
 		
 	}
@@ -60,7 +62,7 @@ public class Statistics {
 		// DB connection
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
 		temp.put("Deaths", 10);
-		temp.put("Total patients", 90);
+		temp.put("Total patients", JDBCtry.poscount());
 		return temp;
 	}
 	
@@ -69,10 +71,9 @@ public class Statistics {
 			// DB connection
 			HashMap<String, Integer> temp = new HashMap<String, Integer>();
 			temp.put("Availiable ICU", 35);
-			temp.put("Used ICU", 65);
+			temp.put("Total ECU", ECUNumber);
 			return temp;
 		}
-	
 	
 }
 
