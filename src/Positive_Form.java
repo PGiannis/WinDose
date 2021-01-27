@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 
 
 
-class Positive_Form_example extends JFrame implements ActionListener {
+class Positive_Form extends JFrame implements ActionListener {
 	
 	/* Class variables*/
 	
@@ -52,6 +52,7 @@ class Positive_Form_example extends JFrame implements ActionListener {
 	private JComboBox exyear;
 	private JButton next;
     private JButton back;
+ 
 	
     private String dates[] = { "-//-", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
 			"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
@@ -75,7 +76,7 @@ class Positive_Form_example extends JFrame implements ActionListener {
 			"Perifereia Kentrikis Makedonias", "Perifereia Krhths", "Perifereia Notiou Aigaiou",
 			"Perifereia Peloponisou", "Perifereia Stereas Elladas" };	    
 	   
-	    public Positive_Form_example()	{
+	    public Positive_Form()	{
 	    	
 	    	setTitle("Positve Form"); 
 	        setBounds(300, 90, 900, 600); 
@@ -298,8 +299,8 @@ class Positive_Form_example extends JFrame implements ActionListener {
 		        
 		      if (e.getSource() == back) {
 		    	  
-		    	  First_page_example f  = new First_page_example();
-		    	  f.show();
+		    	  Test t  = new Test();
+		    	  t.show();
 		    	  dispose();
 		      }
 		      else if (e.getSource() == next) {
@@ -352,11 +353,16 @@ class Positive_Form_example extends JFrame implements ActionListener {
 			    	c.show();
 			    	dispose();
 			        
-			        System.out.println(firstName + "\n" + lastname + "\n" +
-			        					DOB + "\n" + AMKA + "\n" + "\n" + Destrict + 
-			        					"\n" + symptoms + "\n" + ecu_needed +
-			        					"\n" + TD + "\n" + district2 + "\n");
-			        					
+			        try {
+						p.writePatientToDB();
+					} catch (Exception e11) {
+						
+						e11.printStackTrace();
+					}
+			        
+			        
+			        
+			        
 		      }
 		    }
 	        
