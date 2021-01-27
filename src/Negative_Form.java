@@ -1,3 +1,5 @@
+package src;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -7,7 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-class Negative_Form_example extends JFrame implements ActionListener {
+class Negative_Form extends JFrame implements ActionListener {
 
 	/* Class variables */
 
@@ -59,7 +61,7 @@ class Negative_Form_example extends JFrame implements ActionListener {
 			"Perifereia Kentrikis Makedonias", "Perifereia Krhths", "Perifereia Notiou Aigaiou",
 			"Perifereia Peloponisou", "Perifereia Stereas Elladas" };	    
 	   
-	public Negative_Form_example() {
+	public Negative_Form() {
 
 		setTitle("Negative Form");
 		setBounds(300, 90, 900, 600);
@@ -287,18 +289,16 @@ class Negative_Form_example extends JFrame implements ActionListener {
 					e11.printStackTrace();
 				}
 
-				System.out.println(" New member added ");
+				JOptionPane.showMessageDialog(sub, "You have successfully registered");
 
 			} catch (Exception e1) {
-				System.out.println("Error");
-				invalid.setText("Some form fields are invalid! Try again.");
-				
+				JOptionPane.showMessageDialog(sub, "Some form fields are invalid! Try again.");
 			}
 
 		} else if (e.getSource() == back) {
 
-			First_page_example f = new First_page_example();
-			f.show();
+			Test t = new Test();
+			t.show();
 			dispose();
 		}
 	}
