@@ -20,11 +20,20 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.*;
+import java.io.IOException;
 
 import javax.swing.*;
 
 import net.proteanit.sql.DbUtils;
 
+/*import java.awt.Label;
+import java.awt.Button;
+import java.awt.TextArea;
+import java.awt.Choice;
+import javax.swing.JRadioButton;
+import javax.swing.JTextPane;
+import javax.swing.JTextField;
+import javax.swing.ButtonGroup;*/
 
 
 
@@ -47,11 +56,11 @@ public class AppearanceContacts extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnLoadTable = new JButton ("Load contacts Data");
-		btnLoadTable.addActionListener(new ActionListener); {
-			public void actionPerformed(ActionEvent arg0)  {
+		btnLoadTable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent argO)  {
 				try {
 					PreparedStatement pst = null;
-					String query="select * from Contacts";
+					String query="select First_name,Last_name,Phone from Contacts";
 					pst = connection.prepareStatement(query);
 					ResultSet rs=pst.executeQuery();
 					table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -60,8 +69,7 @@ public class AppearanceContacts extends JFrame {
 					e.printStackTrace();
 					
 				}
-			}
-		};
+		}}
 		btnLoadTable.setBounds(247, 23, 168, 23);
 		contentPane.add(btnLoadTable);
 		
