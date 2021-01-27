@@ -132,7 +132,7 @@ public class JDBCtry {
 		}		
 	}
 
-public static int FemaleCount(){
+	public static int FemaleCount(){
 		
 		try {
 			
@@ -174,7 +174,7 @@ public static int FemaleCount(){
 
 			// Create statement
 			
-			PreparedStatement myStmt = myConn.prepareStatement("select count(ID) as areapos from positive where area = ?");
+			PreparedStatement myStmt = myConn.prepareStatement("select count(AMKA) as areapos from Patient where area = ?");
 
 			// Process result set
 			
@@ -184,7 +184,9 @@ public static int FemaleCount(){
 				case 1:
 					myStmt.setString(1, "Attica");
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("areapos");
+					myRs.close();
 					break;
 				case 2:
 					myStmt.setString(1, "Macedonia");
@@ -234,76 +236,6 @@ public static int FemaleCount(){
 		}
 	}
 	
-	public static int perAreaNeg(int areaId){
-		
-		try {
-			// Get connection to db
-
-			Class.forName("com.mysql.jdbc.Driver"); 
-
-			Connection myConn = DriverManager.getConnection("jdbc:mysql://prometheus.dmst.aueb.gr:3306/ipetsas_windose?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "ipetsas", "1234");
-
-			// Create statement
-			
-			PreparedStatement myStmt = myConn.prepareStatement("select count(ID) as areaneg from negative where area = ?");
-
-			// Process result set
-			
-			int n = 0;
-			ResultSet myRs = null;
-			switch (areaId) {
-				case 1:
-					myStmt.setString(1, "Attica");
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("areaneg");
-					break;
-				case 2:
-					myStmt.setString(1, "Macedonia");
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("areaneg");
-					break;
-				case 3:
-					myStmt.setString(1, "Thrace");
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("areaneg");
-					break;
-				case 4:
-					myStmt.setString(1, "Peloponnese");
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("areaneg");
-					break;
-				case 5:
-					myStmt.setString(1, "Ionian Islands");
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("areaneg");
-					break;
-				case 6:
-					myStmt.setString(1, "Aegean Islands");
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("areaneg");
-					break;
-				case 7:
-					myStmt.setString(1, "Epirus");
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("areaneg");
-					break;
-				case 8:
-					myStmt.setString(1, "Thessaly");
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("areaneg");
-					break;
-				default:
-					
-			}
-			
-			return n;
-			
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return 0;
-		}
-	}
 	
 	public static int perAgePos(int ageId){
 		
@@ -316,7 +248,7 @@ public static int FemaleCount(){
 
 			// Create statement
 			
-			PreparedStatement myStmt = myConn.prepareStatement("select count(ID) as agepos from positive where age < ?");
+			PreparedStatement myStmt = myConn.prepareStatement("select count(AMKA) as agepos from Patient where age <= ?");
 
 			// Process result set
 			
@@ -324,46 +256,61 @@ public static int FemaleCount(){
 			ResultSet myRs = null;
 			switch (ageId) {
 				case 1:
-					myStmt.setInt(1, 10);
+					myStmt.setInt(1, 20);
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("agepos");
+					myRs.close();
 					break;
 				case 2:
-					myStmt.setInt(1, 10);
+					myStmt.setInt(1, 30);
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("agepos");
+					myRs.close();
 					break;
 				case 3:
-					myStmt.setInt(1, 10);
+					myStmt.setInt(1, 40);
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("agepos");
+					myRs.close();
 					break;
 				case 4:
-					myStmt.setInt(1, 10);
+					myStmt.setInt(1, 50);
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("agepos");
+					myRs.close();
 					break;
 				case 5:
-					myStmt.setInt(1, 10);
+					myStmt.setInt(1, 60);
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("agepos");
+					myRs.close();
 					break;
 				case 6:
-					myStmt.setInt(1, 10);
+					myStmt.setInt(1, 70);
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("agepos");
+					myRs.close();
 					break;
 				case 7:
-					myStmt.setInt(1, 10);
+					myStmt.setInt(1, 80);
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("agepos");
-					break;
-				case 8:
-					myStmt.setInt(1, 10);
-					myRs = myStmt.executeQuery();
-					p = myRs.getInt("agepos");
+					myRs.close();
 					break;
 				default:
+					myStmt.setInt(1, 10);
+					myRs = myStmt.executeQuery();
+					myRs.next();
+					p = myRs.getInt("agepos");
+					myRs.close();
+					break;
 					
 			}
 			
@@ -376,71 +323,6 @@ public static int FemaleCount(){
 		}
 	}
 	
-	public static int perAgeNeg(int ageId){
-		
-		try {
-			// Get connection to db
-			
-			Class.forName("com.mysql.jdbc.Driver"); 
-
-			Connection myConn = DriverManager.getConnection("jdbc:mysql://prometheus.dmst.aueb.gr:3306/ipetsas_windose?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "ipetsas", "1234");
-
-			// Create statement
-			
-			PreparedStatement myStmt = myConn.prepareStatement("select count(ID) as ageneg from negative where area < ?");
-
-			// Process result set
-			
-			int n = 0;
-			ResultSet myRs = null;
-			switch (ageId) {
-				case 1:
-					myStmt.setInt(1, 10);
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("ageneg");
-					break;
-				case 2:
-					myStmt.setInt(1, 20);
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("ageneg");
-					break;
-				case 3:
-					myStmt.setInt(1, 30);
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("ageneg");
-					break;
-				case 4:
-					myStmt.setInt(1, 40);
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("ageneg");
-					break;
-				case 5:
-					myStmt.setInt(1, 50);
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("ageneg");
-					break;
-				case 6:
-					myStmt.setInt(1, 60);
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("ageneg");
-					break;
-				case 7:
-					myStmt.setInt(1, 70);
-					myRs = myStmt.executeQuery();
-					n = myRs.getInt("ageneg");
-					break;
-				default:
-					break;
-			}
-			
-			return n;
-			
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return 0;
-		}
-	}
 	
 	public static int ECUCount(){
 		
@@ -483,7 +365,7 @@ public static int FemaleCount(){
 			
 			ResultSet myRs = null;
 			
-			myStmt.setInt(1, 2);
+			myStmt.setInt(1, 0);
 			
 			myRs = myStmt.executeQuery();
 						
