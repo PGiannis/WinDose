@@ -28,6 +28,8 @@ public class PatientDAO {
 						rs.getBoolean("positive"), rs.getBoolean("symptoms"), rs.getBoolean("ecu"),
 						rs.getBoolean("alive")));
 			}
+			
+			System.out.println(rs.getInt("AMKA"));
 			rs.close();
 			stmt.close();
 			db.close();
@@ -55,37 +57,34 @@ public class PatientDAO {
 	 * @return Patient, the Patient object
 	 * @throws Exception, if patient not found
 	 */
-	public Patient findPatient(int amka) throws Exception {
+	public boolean findPatient(String amka) throws Exception {
 
 		DB db = new DB();
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		boolean f= false;
+		int a=Integer.parseInt(amka);
 		String sqlQuery = "SELECT * FROM patients WHERE AMKA=?";
 
 		try {
 			con = db.getConnection();
 			stmt = con.prepareStatement(sqlQuery);
-			stmt.setInt(1, amka);
+			stmt.setInt(1, a);
 
 			rs = stmt.executeQuery();
 
-			if (!rs.next()) {
-				rs.close();
-				stmt.close();
-				db.close();
-				throw new Exception("Patient with AMKA: " + amka + " not found");
+			if (rs.next()) {
+				f=true;
 			}
 
-			Patient patient = new Patient(rs.getInt("amka"), rs.getString("firstname"), rs.getString("lastname"),
-					rs.getString("district"), rs.getDate("testDate"), rs.getDate("dob"), rs.getString("gender"),
-					rs.getBoolean("positive"), rs.getBoolean("symptoms"), rs.getBoolean("ecu"), rs.getBoolean("alive"));
+			
 
 			rs.close();
 			stmt.close();
 			db.close();
 
-			return patient;
+			return f;
 
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
@@ -150,5 +149,50 @@ public class PatientDAO {
 		}
 
 	}// end of updatePatient
+
+
+
+public Patient printPatient(int amka) throws Exception {
+
+	DB db = new DB();
+	Connection con = null;
+	PreparedStatement stmt = null;
+	String sql = "SELECT * from patient where amka=?;";
+
+	try {
+
+		con = db.getConnection();
+
+		stmt = con.prepareStatement(sql);
+
+		stmt.setInt(1, amka);
+
+		ResultSet rs = stmt.executeQuery();
+        Patient patient= null;
+		if (rs.next()) {
+			 patient= new Patient(rs.getInt("amka"), rs.getString("firstname"), rs.getString("lastname"),
+					rs.getString("district"), rs.getDate("testDate"), rs.getDate("dob"), rs.getString("gender"),
+					rs.getBoolean("positive"), rs.getBoolean("symptoms"), rs.getBoolean("ecu"),
+					rs.getBoolean("alive"));
+		}
+		
+
+		rs.close();
+		stmt.close();
+		db.close();
+		
+		return patient; 	
+	} catch (Exception e) {
+		throw new Exception(e.getMessage());
+	} finally {
+		try {
+			db.close();
+		} catch (Exception e) {
+		}
+	}
+	
+	 
+
+}// end of printPatient
 
 } // End of class
