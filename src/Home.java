@@ -101,8 +101,20 @@ public Home() {
 	        
 		dispose();
 	
-    	} else if (e.getSource() == option3) 	{
+    	}
+    	
+    	else if (e.getSource() == option3) 	{
+    		
+    		PieChartCovid pie = new PieChartCovid();
+    		pie.Run();
 
+    	}
+else if (e.getSource() == option4) 	{
+
+    		Login l = new Login();
+    		
+    		l.show();
+    		dispose();
     		
     	    
     		
