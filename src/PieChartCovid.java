@@ -20,8 +20,13 @@ public class PieChartCovid extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    public void Run() {
+    	launch();
+    }
  
-    public static void main(String[] args) {
+    
+   /* public static void main(String[] args) {
         launch(args);
     }
+    */
 }

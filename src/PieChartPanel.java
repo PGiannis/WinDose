@@ -33,12 +33,12 @@ public class PieChartPanel extends Pane{
 		VBox vbox3 = new VBox();//	4)sex
 		VBox vbox4 = new VBox();//	5)deaths
 		VBox vbox5 = new VBox();//	6)ICU 
-		TextField textf = new TextField();
+/*		TextField textf = new TextField();
 		textf.setPromptText("Type your age");
 		Button b = new Button("Search");
 		vbox2.getChildren().add(textf);
 		vbox2.getChildren().add(b);
-		
+*/		
 		
 		//area
 		ObservableList<String> areas = 
@@ -117,7 +117,7 @@ public class PieChartPanel extends Pane{
 				
 			} );
 		// end of area
-	/*	
+	
 		// age
 		ObservableList<String> ages = 
 			    FXCollections.observableArrayList(
@@ -195,7 +195,7 @@ public class PieChartPanel extends Pane{
 			
 		} );
 		// end of age
-		*/
+		
 	
 		// central
 		ObservableList<String> options = 
@@ -272,9 +272,16 @@ public class PieChartPanel extends Pane{
 							} else if (vbox5.getChildren().size() > 1) {
 								vbox5.getChildren().remove(1);
 							}
+							vbox2.setPadding(new Insets(10, 10, 10, 10));
+							HBox hbox2 = new HBox();
+							hbox2.setPadding(new Insets(5, 140, 5, 140));
+							hbox2.getChildren().add(comboBoxAge);
+							vbox2.getChildren().add(hbox2);							
+							vbox.getChildren().add(vbox2);
+							break;
 					/*		vbox.getChildren().add(PieChartPanel.percentageOfPositivesPerAge());
 							break;
-							*/
+							
 							
 							textf.setPromptText("Type your age");
 							Button b = new Button("Search");
@@ -309,7 +316,7 @@ public class PieChartPanel extends Pane{
 							
 							vbox.getChildren().add(vbox2);
 							break;
-							
+					*/
 						case 3://	sex
 							
 							if (vbox.getChildren().size() > 1) {
@@ -325,7 +332,7 @@ public class PieChartPanel extends Pane{
 							} else if (vbox5.getChildren().size() > 1) {
 								vbox5.getChildren().remove(1);
 							}
-							vbox.getChildren().add(PieChartPanel.percentageOfPositivesPerSex());
+							vbox.getChildren().add(PieChartPanel.percentageOfPositivesPerGender());
 							break;
 
 						case 4://	deaths
@@ -455,11 +462,12 @@ public class PieChartPanel extends Pane{
 				);
 		
 		return new PieChart(pieChartData);
-	}*/
+	}
+	*/
 	
-	/*public static PieChart percentageOfPositivesPerSex() {
+	/*public static PieChart percentageOfPositivesPerGender() {
 		Statistics stat = new Statistics();
-		HashMap<String, Integer> temp = stat.percentageOfPositivesPerSex();
+		HashMap<String, Integer> temp = stat.percentageOfPositivesPerGender();
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data("Women", temp.get("Women")),
 				new PieChart.Data("Men", temp.get("Men"))
@@ -475,8 +483,8 @@ public class PieChartPanel extends Pane{
 		HashMap<String, Integer> temp = stat.percentageOfPositivesPerAge(ageDB);
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				
-				new PieChart.Data("Selected Age", temp.get("Selected Age")),
-				new PieChart.Data("Total", temp.get("Total"))//,
+				new PieChart.Data("Selected Age Group", temp.get("Selected Age Group")),
+				new PieChart.Data("Total", temp.get("Total"))
 			//	new PieChart.Data("20-29", temp.get("20-29")),
 			//	new PieChart.Data("30-39", temp.get("30-39")),
 			//	new PieChart.Data("40-49", temp.get("40-49")),
@@ -489,9 +497,9 @@ public class PieChartPanel extends Pane{
 	}
 	
 	
-	public static PieChart percentageOfPositivesPerSex() {
+	public static PieChart percentageOfPositivesPerGender() {
 		Statistics stat = new Statistics();
-		HashMap<String, Integer> temp = stat.percentageOfPositivesPerSex();
+		HashMap<String, Integer> temp = stat.percentageOfPositivesPerGender();
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data("Women", temp.get("Women")),
 				new PieChart.Data("Men", temp.get("Men"))
@@ -517,8 +525,8 @@ public class PieChartPanel extends Pane{
 		Statistics stat = new Statistics();
 		HashMap<String, Integer> temp = stat.percentageOfAvailiableICU();
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-				new PieChart.Data("Availiable ICU", temp.get("Availiable ICU")),
-				new PieChart.Data("Used ICU", temp.get("Used ICU"))
+				new PieChart.Data("Available ECU", temp.get("Available ECU")),
+				new PieChart.Data("Used ECU", temp.get("Used ECU"))
 				);
 
 		return new PieChart(pieChartData);

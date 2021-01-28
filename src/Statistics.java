@@ -32,7 +32,7 @@ public class Statistics {
 		
 		// DB connection (να αλλάξουμε και τις αντίστοιχες τιμές που έχω βάλλει για να τρέχουν) 
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Selected Age", ageDB);
+		temp.put("Selected Age Group", ageDB);
 		temp.put("Total", 20);
 	//	temp.put("20-29", 20);
 	//	temp.put("30-39", 20);
@@ -44,7 +44,7 @@ public class Statistics {
 		
 	}
 	
-	public HashMap<String, Integer> percentageOfPositivesPerSex() {
+	public HashMap<String, Integer> percentageOfPositivesPerGender() {
 		
 		
 		// DB connection
@@ -68,8 +68,8 @@ public class Statistics {
 			
 			// DB connection
 			HashMap<String, Integer> temp = new HashMap<String, Integer>();
-			temp.put("Availiable ICU", 35);
-			temp.put("Used ICU", 65);
+			temp.put("Available ECU", 35);
+			temp.put("Used ECU", 65);
 			return temp;
 		}
 	
