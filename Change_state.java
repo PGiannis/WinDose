@@ -64,7 +64,7 @@ class Change_state extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		
-		
+		System.exit(0);
 	}
 
 }
