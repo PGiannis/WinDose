@@ -15,6 +15,7 @@ class Negative_Form extends JFrame implements ActionListener {
 
 	private Container c;
 	private JLabel title;
+	private ImageIcon image;
 	private JLabel firstName1;
 	private JTextField firstName2;
 	private JLabel lastname1;
@@ -36,32 +37,34 @@ class Negative_Form extends JFrame implements ActionListener {
 	private JRadioButton female;
 	private JButton sub;
 	private JButton back;
+	private JButton Home;
 	private ButtonGroup gengp;
 	private JLabel invalid;
 
 	private String dates[] = { "-//-", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
 			"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
-	
+
 	private String months[] = { "-//-", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
-	
+
 	private String years[] = { "-//-", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012",
-			"2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001",
-			"2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990",
-			"1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979",
-			"1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968",
-			"1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", 
-			"1956", "1955", "1954", "1953", "1952", "1951", "1950", "1949", "1948", "1947", "1946",
-			"1945", "1944", "1943", "1942", "1941", "1940", "1939", "1938", "1937", "1936", "1935",
-			"1934", "1933", "1932", "1931", "1930", "1929", "1928", "1927", "1926", "1925", "1924",
-			"1923", "1922", "1921", "1920", "1919", "1918", "1917", "1916", "1915", "1914", "1913"};
+			"2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999",
+			"1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986",
+			"1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973",
+			"1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960",
+			"1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950", "1949", "1948", "1947",
+			"1946", "1945", "1944", "1943", "1942", "1941", "1940", "1939", "1938", "1937", "1936", "1935", "1934",
+			"1933", "1932", "1931", "1930", "1929", "1928", "1927", "1926", "1925", "1924", "1923", "1922", "1921",
+			"1920", "1919", "1918", "1917", "1916", "1915", "1914", "1913" };
 
 	private String Destricts[] = { "-//-", "Perifereia Attikis", "Pereiferia Anatolikis Makedonias & Thrakis",
 			"Perifereia Boreiou Aigaiou", "Perifereia Dytikis Elladas", "Perifereia Dytikis Makedonias",
 			"Perifereia Hpeirou", "Perifereia Thessalias", "Perifereia Ioniwn Nhsiwn",
 			"Perifereia Kentrikis Makedonias", "Perifereia Krhths", "Perifereia Notiou Aigaiou",
-			"Perifereia Peloponisou", "Perifereia Stereas Elladas" };	    
-	   
+			"Perifereia Peloponisou", "Perifereia Stereas Elladas" };
+
 	public Negative_Form() {
+
+		ImageIcon image = new ImageIcon("/Users/johnpetsas/Desktop/java2_Windose/WinDose/src/Home4.jpg");
 
 		setTitle("Negative Form");
 		setBounds(300, 90, 900, 600);
@@ -223,7 +226,15 @@ class Negative_Form extends JFrame implements ActionListener {
 		back.setLocation(450, 500);
 		back.addActionListener(this);
 		c.add(back);
-		
+
+		/* Home button method */
+		Home = new JButton(image);
+		Home.setFont(new Font("Arial", Font.PLAIN, 15));
+		Home.setSize(60, 60);
+		Home.setLocation(820, 500);
+		Home.addActionListener(this);
+		c.add(Home);
+
 		invalid = new JLabel("");
 		invalid.setBounds(300, 300, 400, 300);
 		c.add(invalid);
@@ -280,12 +291,13 @@ class Negative_Form extends JFrame implements ActionListener {
 					gender = "F";
 				}
 
-				Patient p = new Patient(AMKA, firstName, lastname, Destrict, TD, DOB, gender, false, false, false, true);
-				
+				Patient p = new Patient(AMKA, firstName, lastname, Destrict, TD, DOB, gender, false, false, false,
+						true);
+
 				try {
 					p.writePatientToDB();
 				} catch (Exception e11) {
-					
+
 					e11.printStackTrace();
 				}
 
@@ -299,6 +311,11 @@ class Negative_Form extends JFrame implements ActionListener {
 
 			Test t = new Test();
 			t.show();
+			dispose();
+		} else if (e.getSource() == Home) {
+
+			Home h = new Home();
+			h.show();
 			dispose();
 		}
 	}
