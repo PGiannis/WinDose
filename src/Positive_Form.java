@@ -306,6 +306,32 @@ class Positive_Form extends JFrame implements ActionListener {
 		      else if (e.getSource() == next) {
 		    	  
 		    	  
+		    	  try {
+						boolean error = false;
+						if (firstName2.getText().length() < 5) {
+							error = true;
+						}
+						if (lastname2.getText().length() < 5) {
+							error = true;
+						}
+
+						if (dob == null) {
+							error = true;
+						}
+						if (amka2.getText().length() < 9) {
+							error = true;
+						}
+
+						if (tdate == null) {
+							error = true;
+						}
+						if (((String) district2.getSelectedItem()).length() < 5) {
+							error = true;
+						}
+						if (error) {
+							throw new Exception();
+						}
+		    	  
 		    	  String firstName = firstName2.getText();		                      
 		        	String lastname = lastname2.getText();        
 		        	Date DOB = null;
@@ -347,8 +373,9 @@ class Positive_Form extends JFrame implements ActionListener {
 			        
 			        
 			        Patient p = new Patient(AMKA, firstName, lastname, Destrict, TD, DOB, gender, true, symptoms, ecu_needed, true);
+			       
 			        
-			        
+
 			        Contacts c = new Contacts(p);
 			    	c.show();
 			    	dispose();
@@ -356,9 +383,15 @@ class Positive_Form extends JFrame implements ActionListener {
 			        try {
 						p.writePatientToDB();
 					} catch (Exception e11) {
-						
+
 						e11.printStackTrace();
+
 					}
+
+					} catch (Exception e1) {
+						JOptionPane.showMessageDialog(next, "Some form fields are invalid! Try again.");
+					}
+
 			        
 			        
 			        

@@ -1,13 +1,22 @@
 package src;
 
 import java.awt.Container;
+import javafx.application.Application;
+
+import javafx.scene.Scene;
+
+import javafx.stage.Stage;
+
+import javafx.scene.Group;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-import javax.swing.*; 
+import javax.swing.*;
+
+import javafx.scene.Group; 
 
 class Home extends JFrame implements ActionListener  {
 	
@@ -93,7 +102,14 @@ public Home() {
 		dispose();
 	
     	} else if (e.getSource() == option3) 	{
-    		PieChartPanel p = new PieChartPanel();
+
+    		
+    	    
+    		
+
+    	        
+    		 
+    		
     	}
     }
     	

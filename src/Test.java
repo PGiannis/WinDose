@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.*; 
 import java.awt.event.*; 
 
-class Test
-	extends JFrame
-	implements ActionListener {
+class Test extends JFrame implements ActionListener {
 		
 		/* Class variables */
 	    private Container c; 
