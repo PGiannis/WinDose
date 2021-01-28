@@ -21,7 +21,7 @@ public class Data extends JFrame implements ActionListener {
 	private JLabel y;
 	private JLabel o;
 	private JLabel m;
-	private JButton close;
+	private JButton back;
 	private JButton home;
 	
 	public Data() {
@@ -40,7 +40,7 @@ public class Data extends JFrame implements ActionListener {
         c.add(title); 
         
 
-        name = new JLabel("name"); 
+        name = new JLabel("Name:"); 
         name.setFont(new Font("Arial", Font.PLAIN, 20)); 
         name.setSize(120, 20); 
         name.setLocation(120, 100); 
@@ -79,12 +79,12 @@ public class Data extends JFrame implements ActionListener {
         
         
         
-        close = new JButton("Close"); 
-        close.setFont(new Font("Arial", Font.PLAIN, 15)); 
-        close.setSize(80, 20); 
-        close.setLocation(190, 250); 
-        close.addActionListener(this); 
-        c.add(close); 
+        back = new JButton("Back"); 
+        back.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        back.setSize(80, 20); 
+        back.setLocation(190, 250); 
+        back.addActionListener(this); 
+        c.add(back); 
         
         home = new JButton("Home"); 
         home.setFont(new Font("Arial", Font.PLAIN, 15)); 
@@ -103,8 +103,8 @@ public class Data extends JFrame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-if(arg0.getSource() ==close) {
-	System.exit(0);	
+if(arg0.getSource() ==back) {
+	MiniMenu a = new MiniMenu();	
 		}
 else if (arg0.getSource() ==home){
 		Login l = new Login();
