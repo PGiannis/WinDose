@@ -1,7 +1,6 @@
 package src;
 
 import java.util.HashMap;
-
 import javafx.scene.chart.PieChart;
 
 public class Statistics {
@@ -23,25 +22,17 @@ public class Statistics {
 		
 		// DB connection
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Positives in selected area", 40);
-		temp.put("Negatives in selected area", 60);
+		temp.put("Positives in selected area", JDBCtry.perAreaPos(areaDBId));
+		temp.put("Total positives", JDBCtry.poscount());
 		return temp;
 		
 	}
 	
-	public HashMap<String, Integer> percentageOfPositivesPerAge(int ageDB) {
-		
-		
-		// DB connection  
+	public HashMap<String, Integer> percentageOfPositivesPerAge(int ageDB) {	
+
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Selected Age", ageDB);
-		temp.put("Total", JDBCtry.poscount());
-	//	temp.put("20-29", 20);
-	//	temp.put("30-39", 20);
-	//	temp.put("40-49", 20);
-	//	temp.put("50-59", 20);
-	//	temp.put("60-69", 20);
-	//	temp.put("70+", 20);
+		temp.put("Positives in selected age group", JDBCtry.perAgePos(ageDB));
+		temp.put("Total positives", JDBCtry.poscount());
 		return temp;
 		
 	}
@@ -61,17 +52,22 @@ public class Statistics {
 		
 		// DB connection
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		temp.put("Deaths", 10);
+		temp.put("Deaths", JDBCtry.Mortality());
 		temp.put("Total patients", JDBCtry.poscount());
 		return temp;
 	}
 	
-	public HashMap<String, Integer>percentageOfAvailiableICU(){
+	public HashMap<String, Integer>percentageOfAvailableECU(){
 			
 			// DB connection
+		    int ecu = JDBCtry.ECUCount();
 			HashMap<String, Integer> temp = new HashMap<String, Integer>();
-			temp.put("Availiable ICU", 35);
-			temp.put("Total ECU", ECUNumber);
+			temp.put("Used ECUs", ecu);
+			if (ecu >=ECUNumber){
+				temp.put("Available ECUs", 0);
+			} else {
+				temp.put("Available ECUs", ECUNumber-ecu);
+			}
 			return temp;
 		}
 	
