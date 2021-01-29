@@ -317,10 +317,10 @@ class Positive_Form extends JFrame implements ActionListener {
 
 			try {
 				boolean error = false;
-				if (firstName2.getText().length() < 5) {
+				if (firstName2.getText().length() < 2) {
 					error = true;
 				}
-				if (lastname2.getText().length() < 5) {
+				if (lastname2.getText().length() < 2) {
 					error = true;
 				}
 
