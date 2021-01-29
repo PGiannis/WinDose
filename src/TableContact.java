@@ -1,12 +1,15 @@
 package src;
 
 
-	// Packages to import 
+	import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+// Packages to import 
 	import javax.swing.JFrame; 
 	import javax.swing.JScrollPane; 
 	import javax.swing.JTable; 
 	  
-	public class TableContact {
+	public class TableContact extends JFrame{
 	    // frame 
 	    JFrame f; 
 	    // Table 
@@ -21,11 +24,25 @@ package src;
 	        // Frame Title 
 	        f.setTitle("Contacts"); 
 	  
-	        // Data to be displayed in the JTable 
-	        String[][] data = { 
-	            { "Kundan Kumar Jha", "4031", "CSE" }, 
-	            { "Anand Jha", "6014", "IT" } 
-	        }; 
+	        // Data to be displayed in the JTable
+	        ArrayList<Contact> contacts = null;
+	        try {
+				contacts = Contact.getContacts();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        
+	        String[][] data = new String[contacts.size()][3];
+	        int count = 0;
+	        Contact c = null;
+	        for (String[] line : data) {
+	        	c = contacts.get(count);
+	        	line[1] = c.getName();
+	        	line[0] = String.valueOf(c.getId());
+	        	line[2] = c.getPhone();
+	        	count++;
+	        }
 	  
 	        // Column Names 
 	        String[] columnNames = { "Contact id", "Name", "Phone" }; 
