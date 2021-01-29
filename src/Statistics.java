@@ -1,7 +1,6 @@
 package src;
 
 import java.util.HashMap;
-
 import javafx.scene.chart.PieChart;
 
 public class Statistics {
@@ -30,31 +29,9 @@ public class Statistics {
 	}
 	
 	public HashMap<String, Integer> percentageOfPositivesPerAge(int ageDB) {	
-		
-		int ageCat = 0;
+
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
-		if (ageDB <= 20) {
-			ageCat = 1;
-		}
-		else if (ageDB <= 30) {
-			ageCat = 2;
-		}
-		else if (ageDB <= 40) {
-			ageCat = 3;
-		}
-		else if (ageDB <= 50) {
-			ageCat = 4;
-		}
-		else if (ageDB <= 60) {
-			ageCat = 5;
-		}
-		else if (ageDB <= 70) {
-			ageCat = 6;
-		}
-		else {
-			ageCat = 7;
-		}
-		temp.put("Positives in selected age", JDBCtry.perAgePos(ageCat));
+		temp.put("Positives in selected age group", JDBCtry.perAgePos(ageDB));
 		temp.put("Total positives", JDBCtry.poscount());
 		return temp;
 		
@@ -80,12 +57,17 @@ public class Statistics {
 		return temp;
 	}
 	
-	public HashMap<String, Integer>percentageOfAvailiableECU(){
+	public HashMap<String, Integer>percentageOfAvailableECU(){
 			
 			// DB connection
+		    int ecu = JDBCtry.ECUCount();
 			HashMap<String, Integer> temp = new HashMap<String, Integer>();
-			temp.put("Availiable ECU", JDBCtry.ECUCount());
-			temp.put("Total ECU", ECUNumber);
+			temp.put("Used ECUs", ecu);
+			if (ecu >=ECUNumber){
+				temp.put("Available ECUs", 0);
+			} else {
+				temp.put("Available ECUs", ECUNumber-ecu);
+			}
 			return temp;
 		}
 	
