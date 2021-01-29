@@ -1,3 +1,5 @@
+package src;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ public class PatientDAO {
 		DB db = new DB();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String slcPatient = "SELECT * FROM Patients ;";
+		String slcPatient = "SELECT * FROM Patient ;";
 
 		try {
 			con = db.getConnection();
@@ -23,10 +25,10 @@ public class PatientDAO {
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				patients.add(new Patient(rs.getInt("amka"), rs.getString("firstname"), rs.getString("lastname"),
-						rs.getString("district"), rs.getDate("testDate"), rs.getDate("dob"), rs.getString("gender"),
-						rs.getBoolean("positive"), rs.getBoolean("symptoms"), rs.getBoolean("ecu"),
-						rs.getBoolean("alive")));
+				patients.add(new Patient(rs.getInt("AMKA"), rs.getString("First_Name"), rs.getString("Last_Name"),
+						rs.getString("District"), rs.getDate("Date_of_checkin"), rs.getDate("Date_of_birth"), rs.getString("Gender"),
+						rs.getBoolean("Positive"), rs.getBoolean("Symptoms"), rs.getBoolean("ECU"),
+						rs.getBoolean("Alive")));
 			}
 			
 			System.out.println(rs.getInt("AMKA"));
@@ -65,7 +67,7 @@ public class PatientDAO {
 		ResultSet rs = null;
 		boolean f= false;
 		int a=Integer.parseInt(amka);
-		String sqlQuery = "SELECT * FROM patients WHERE AMKA=?";
+		String sqlQuery = "SELECT * FROM Patient WHERE AMKA=?";
 
 		try {
 			con = db.getConnection();
@@ -96,6 +98,48 @@ public class PatientDAO {
 		}
 
 	} // End of findPatient
+	
+	public Patient getPatient(String amka) throws Exception {
+
+		DB db = new DB();
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		boolean f= false;
+		int a=Integer.parseInt(amka);
+		String sqlQuery = "SELECT * FROM Patient WHERE AMKA=?";
+		Patient p = null;
+		try {
+			con = db.getConnection();
+			stmt = con.prepareStatement(sqlQuery);
+			stmt.setInt(1, a);
+
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				p = new Patient(rs.getInt("AMKA"), rs.getString("First_Name"), rs.getString("Last_Name"),
+						rs.getString("District"), rs.getDate("Date_of_checkin"), rs.getDate("Date_of_birth"), rs.getString("Gender"),
+						rs.getBoolean("Positive"), rs.getBoolean("Symptoms"), rs.getBoolean("ECU"),
+						rs.getBoolean("Alive"));
+			}
+
+			
+
+			rs.close();
+			stmt.close();
+			db.close();
+
+			return p;
+
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		} finally {
+			try {
+				db.close();
+			} catch (Exception e) {
+			}
+		}
+	} // End of findPatient
 
 	/**
 	 * Update a Patient.
@@ -108,32 +152,17 @@ public class PatientDAO {
 		DB db = new DB();
 		Connection con = null;
 		PreparedStatement stmt = null;
-		String checkSql = "SELECT * FROM patients WHERE AMKA = ?";
-		String sql = "UPDATE patient(Symptoms, ECU, Alive) VALUES (?, ?, ?);";
+		String sql = "UPDATE Patient SET Symptoms = ?, ECU= ?, Alive = ?;";
 
 		try {
 
 			con = db.getConnection();
 
-			stmt = con.prepareStatement(checkSql);
-
-			stmt.setInt(1, patient.getAmka());
-
-			ResultSet rs = stmt.executeQuery();
-
-			if (rs.next()) {
-				rs.close();
-				stmt.close();
-				throw new Exception("There is not patient's AMKA");
-			}
-
-			rs.close();
-
 			stmt = con.prepareStatement(sql);
 
-			stmt.setBoolean(2, patient.isSymptoms());
-			stmt.setBoolean(3, patient.isEcu());
-			stmt.setBoolean(4, patient.isAlive());
+			stmt.setBoolean(1, patient.isSymptoms());
+			stmt.setBoolean(2, patient.isEcu());
+			stmt.setBoolean(3, patient.isAlive());
 
 			stmt.executeUpdate();
 
@@ -157,7 +186,7 @@ public Patient printPatient(int amka) throws Exception {
 	DB db = new DB();
 	Connection con = null;
 	PreparedStatement stmt = null;
-	String sql = "SELECT * from patient where amka=?;";
+	String sql = "SELECT * from Patient where amka=?;";
 
 	try {
 
@@ -170,12 +199,11 @@ public Patient printPatient(int amka) throws Exception {
 		ResultSet rs = stmt.executeQuery();
         Patient patient= null;
 		if (rs.next()) {
-			 patient= new Patient(rs.getInt("amka"), rs.getString("firstname"), rs.getString("lastname"),
-					rs.getString("district"), rs.getDate("testDate"), rs.getDate("dob"), rs.getString("gender"),
-					rs.getBoolean("positive"), rs.getBoolean("symptoms"), rs.getBoolean("ecu"),
-					rs.getBoolean("alive"));
+			 patient = new Patient(rs.getInt("AMKA"), rs.getString("First_Name"), rs.getString("Last_Name"),
+						rs.getString("District"), rs.getDate("Date_of_checkin"), rs.getDate("Date_of_birth"), rs.getString("Gender"),
+						rs.getBoolean("Positive"), rs.getBoolean("Symptoms"), rs.getBoolean("ECU"),
+						rs.getBoolean("Alive"));
 		}
-		
 
 		rs.close();
 		stmt.close();
