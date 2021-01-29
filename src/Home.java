@@ -1,13 +1,6 @@
 package src;
 
 import java.awt.Container;
-import javafx.application.Application;
-
-import javafx.scene.Scene;
-
-import javafx.stage.Stage;
-
-import javafx.scene.Group;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,7 +9,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import javafx.scene.Group; 
 
 class Home extends JFrame implements ActionListener  {
 	
@@ -93,7 +85,7 @@ public Home() {
 
 }
     public void actionPerformed(ActionEvent e) {
-    	if  (e.getSource() == option1 || e.getSource() == option2 ) {
+    	if  (e.getSource() == option1) {
 		
 		Test t = new Test();
 	       	
@@ -103,10 +95,16 @@ public Home() {
 	
     	}
     	
+    	else if (e.getSource() == option2) {
+    		DeleteContact d = new DeleteContact();
+    		d.show();
+    		dispose();
+    	}
+    	
     	else if (e.getSource() == option3) 	{
     		
     		PieChartCovid pie = new PieChartCovid();
-    		pie.Run();
+    		//pie.Run();
 
     	}
 else if (e.getSource() == option4) 	{
