@@ -8,7 +8,9 @@ public class JDBCtry {
 	public static int poscount(){
 		
 		try {
+			
 			// Get connection to db
+			
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			Connection myConn = DriverManager.getConnection("jdbc:mysql://prometheus.dmst.aueb.gr:3306/ipetsas_windose?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "ipetsas", "1234" );
@@ -365,7 +367,7 @@ public class JDBCtry {
 			
 			ResultSet myRs = null;
 			
-			myStmt.setInt(1, 0);
+			myStmt.setBoolean(1, true);
 			
 			myRs = myStmt.executeQuery();
 			
