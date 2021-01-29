@@ -17,7 +17,7 @@ public class PatientDAO {
 		DB db = new DB();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String slcPatient = "SELECT * FROM Patient ;";
+		String slcPatient = "SELECT * FROM Patient;";
 
 		try {
 			con = db.getConnection();
