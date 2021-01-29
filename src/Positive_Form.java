@@ -311,6 +311,8 @@ class Positive_Form extends JFrame implements ActionListener {
 
 		else if (e.getSource() == Home) {
 			Home h = new Home();
+			h.show();
+			dispose();
 		} else if (e.getSource() == next) {
 
 			try {
