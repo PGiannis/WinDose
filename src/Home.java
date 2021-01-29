@@ -5,7 +5,7 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -104,7 +104,7 @@ public Home() {
     	else if (e.getSource() == option3) 	{
     		
     		PieChartCovid pie = new PieChartCovid();
-    		//pie.Run();
+    		pie.main(null);
 
     	}
 else if (e.getSource() == option4) 	{
@@ -112,15 +112,16 @@ else if (e.getSource() == option4) 	{
     		Login l = new Login();
     		
     		l.show();
-    		dispose();
-    		
-    	    
-    		
-
-    	        
-    		 
+    		dispose();	 
     		
     	}
+else if (e.getSource() == option5) 	{
+
+	TableContact tc = new TableContact();
+	
+	tc.show();
+	
+}
     }
     	
 }
