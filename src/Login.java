@@ -42,7 +42,7 @@ public class Login extends JFrame implements ActionListener {
 		panel.setLayout(null);
 
 		userLabel = new JLabel("AMKA");
-		userLabel.setBounds(175, 100, 80, 25);
+		userLabel.setBounds(160, 100, 80, 25);
 		panel.add(userLabel);
 
 		userText = new JTextField(20);
@@ -74,6 +74,7 @@ public class Login extends JFrame implements ActionListener {
 		}
 		System.out.println(p);
 		if (p != null) {
+			dispose();
 			MiniMenu m = new MiniMenu(p);
 			m.show();
 			dispose();
