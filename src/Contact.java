@@ -121,7 +121,7 @@ public class Contact {
 		}
 }
 	
-	public ArrayList<Contact> getPatients() throws Exception {
+	public static ArrayList<Contact> getContacts() throws Exception {
 
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		Connection con = null;
