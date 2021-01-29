@@ -1,9 +1,11 @@
+package src;
+
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,11 +24,15 @@ public class Data1 extends JFrame implements ActionListener {
 	private JLabel y;
 	private JLabel o;
 	private JLabel m;
-	private JButton close;
-	private JButton home;
+	private JButton back;
+	private JButton Home;
+	private ImageIcon image;
 	private String amka;
 	
 	public Data1(String amka) {
+		
+		ImageIcon im = new ImageIcon("/Users/johnpetsas/Desktop/java2_Windose/WinDose/src/Home4.jpg");
+		
 		this.amka= amka;
 		PatientDAO pd = new PatientDAO();
 		Patient pad= null;
@@ -39,7 +45,7 @@ public class Data1 extends JFrame implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		setTitle("Positve Form"); 
+		setTitle("Data"); 
         setBounds(300, 90, 600, 400); 
         setDefaultCloseOperation(EXIT_ON_CLOSE); 
         setResizable(false); 
@@ -56,8 +62,8 @@ public class Data1 extends JFrame implements ActionListener {
 
         name = new JLabel("Name: " + pad.getFirstname()); 
         name.setFont(new Font("Arial", Font.PLAIN, 20)); 
-        name.setSize(120, 20); 
-        name.setLocation(120, 100); 
+        name.setSize(180, 20); 
+        name.setLocation(50, 100); 
         c.add(name); 
         
         surname = new JLabel("Surname: " + pad.getLastname()); 
@@ -69,7 +75,7 @@ public class Data1 extends JFrame implements ActionListener {
         gender = new JLabel("Gender: " + pad.getGender()); 
         gender.setFont(new Font("Arial", Font.PLAIN, 20)); 
         gender.setSize(100, 20); 
-        gender.setLocation(120, 150); 
+        gender.setLocation(50, 150); 
         c.add(gender);
         
         String status= getState(pad);
@@ -77,7 +83,7 @@ public class Data1 extends JFrame implements ActionListener {
         state = new JLabel("State: " + status); 
         state.setFont(new Font("Arial", Font.PLAIN, 20)); 
         state.setSize(100, 20); 
-        state.setLocation(120, 200); 
+        state.setLocation(50, 230); 
         c.add(state);
         
         age = new JLabel("Age: " + pad.getAge()); 
@@ -89,25 +95,25 @@ public class Data1 extends JFrame implements ActionListener {
         
         districts = new JLabel("Districts: " + pad.getDistrict()); 
         districts.setFont(new Font("Arial", Font.PLAIN, 20)); 
-        districts.setSize(120, 20); 
-        districts.setLocation(370, 200); 
+        districts.setSize(300, 20); 
+        districts.setLocation(50, 200); 
         c.add(districts);
         
         
         
-        close = new JButton("Close"); 
-        close.setFont(new Font("Arial", Font.PLAIN, 15)); 
-        close.setSize(80, 20); 
-        close.setLocation(190, 250); 
-        close.addActionListener(this); 
-        c.add(close); 
+        back = new JButton("Back"); 
+        back.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        back.setSize(80, 20); 
+        back.setLocation(190, 300); 
+        back.addActionListener(this); 
+        c.add(back); 
         
-        home = new JButton("Home"); 
-        home.setFont(new Font("Arial", Font.PLAIN, 15)); 
-        home.setSize(80, 20); 
-        home.setLocation(290, 250); 
-        home.addActionListener(this); 
-        c.add(home); 
+        Home = new JButton(image);
+		Home.setFont(new Font("Arial", Font.PLAIN, 15));
+		Home.setSize(60, 60);
+		Home.setLocation(250, 300);
+		Home.addActionListener(this);
+		c.add(Home);
         
         
         
@@ -121,12 +127,15 @@ public class Data1 extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		
 		
-if(arg0.getSource() ==close) {
-	System.exit(0);	
+if(arg0.getSource() == back) {
+	MiniMenu m = new MiniMenu();
+	m.show();
+	dispose();
+		
 		}
-else if (arg0.getSource() ==home){
-		Login l = new Login();
-		l.show();
+else if (arg0.getSource() ==Home){
+		Home h = new Home();
+		h.show();
 		dispose();
 
 	}
