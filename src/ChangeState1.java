@@ -18,8 +18,9 @@ class ChangeState1 extends JFrame implements ActionListener {
 	private JComboBox State;
 	private JButton commit;
 	
+	
 	private String state[]
-			= {"-//-", "Symtoms","No symtoms","ECU","Past away"
+			= {"-//-", "Symptoms","No symptoms","ECU","Past away"
 					};
 private String amka;
 	
@@ -55,6 +56,8 @@ private String amka;
      commit.setLocation(250, 230); 
      commit.addActionListener(this); 
      c.add(commit);
+     
+     
      
      
      
