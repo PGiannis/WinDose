@@ -5,45 +5,12 @@ import javafx.application.Application;
 
 public class JDBCtry {
 
-	public static void main(String[] args) {
-		Application.launch(App.class, null);
-		/*results();*/
-	}
-
-/*	public static void results(){
-		
-		try {
-			// Get connection to db
-			
-			Class.forName("com.mysql.jdbc.Driver"); 
-			
-			Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javadb?characterEncoding=latin1&useConfigs=maxPerformance&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-
-			// Create statement
-			
-			Statement myStmt = myConn.createStatement();
-
-			// Execute SQL Query
-			
-			ResultSet myRs = myStmt.executeQuery("select * from tests");
-			
-			// Process result set
-		
-			while (myRs.next()) {
-				System.out.println(myRs.getString("ID") + ", " + myRs.getString("Name"));
-			}
-		
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-*/
 	public static int poscount(){
 		
 		try {
 			// Get connection to db
-			Class.forName("com.mysql.jdbc.Driver"); 
+			Class.forName("com.mysql.jdbc.Driver");
+			
 			Connection myConn = DriverManager.getConnection("jdbc:mysql://prometheus.dmst.aueb.gr:3306/ipetsas_windose?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "ipetsas", "1234" );
 
 			// Create statement
@@ -60,6 +27,8 @@ public class JDBCtry {
 			int p = myRs.getInt("pcount");
 			myRs.close();
 
+			myConn.close();
+			myStmt.close();
 			return p;
 		
 		}
@@ -72,19 +41,14 @@ public class JDBCtry {
 	public static int negcount(){
 		
 		try {
-			// Get connection to db
-			Class.forName("com.mysql.jdbc.Driver"); 
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			
 			Connection myConn = DriverManager.getConnection("jdbc:mysql://prometheus.dmst.aueb.gr:3306/ipetsas_windose?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "ipetsas", "1234");
-
-			// Create statement
 			
 			Statement myStmt = myConn.createStatement();
 
-			// Execute SQL Query
-			
 			ResultSet myRs = myStmt.executeQuery("select count(AMKA) as ncount from Patient where Positive = false");
-			
-			// Process result set
 			
 			myRs.next();
 			
@@ -92,6 +56,8 @@ public class JDBCtry {
 			
 			myRs.close();
 			
+			myConn.close();
+			myStmt.close();
 			return n;
 			
 		}
@@ -123,6 +89,8 @@ public class JDBCtry {
 			
 			myRs.close();
 
+			myConn.close();
+			myStmt.close();
 			return m;
 			
 		}
@@ -154,6 +122,8 @@ public class JDBCtry {
 			
 			myRs.close();
 
+			myConn.close();
+			myStmt.close();
 			return f;
 			
 		}
@@ -174,7 +144,7 @@ public class JDBCtry {
 
 			// Create statement
 			
-			PreparedStatement myStmt = myConn.prepareStatement("select count(AMKA) as areapos from Patient where area = ?");
+			PreparedStatement myStmt = myConn.prepareStatement("select count(AMKA) as areapos from Patient where District = ?");
 
 			// Process result set
 			
@@ -182,51 +152,72 @@ public class JDBCtry {
 			ResultSet myRs = null;
 			switch (areaId) {
 				case 1:
-					myStmt.setString(1, "Attica");
+					myStmt.setString(1, "Perifereia Dytikis Elladas");
 					myRs = myStmt.executeQuery();
 					myRs.next();
 					p = myRs.getInt("areapos");
 					myRs.close();
 					break;
 				case 2:
-					myStmt.setString(1, "Macedonia");
+					myStmt.setString(1, "Pereiferia Anatolikis Makedonias & Thrakis");
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("areapos");
+					myRs.close();
 					break;
 				case 3:
-					myStmt.setString(1, "Thrace");
+					myStmt.setString(1, "Perifereia Krhths");
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("areapos");
+					myRs.close();
 					break;
 				case 4:
-					myStmt.setString(1, "Peloponnese");
+					myStmt.setString(1, "Perifereia Attikis");
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("areapos");
+					myRs.close();
 					break;
 				case 5:
-					myStmt.setString(1, "Ionian Islands");
+					myStmt.setString(1, "Perifereia Boreiou Aigaiou");
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("areapos");
+					myRs.close();
 					break;
 				case 6:
-					myStmt.setString(1, "Aegean Islands");
+					myStmt.setString(1, "Perifereia Thessalias");
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("areapos");
+					myRs.close();
 					break;
 				case 7:
-					myStmt.setString(1, "Epirus");
+					myStmt.setString(1, "Perifereia Notiou Aigaiou");
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("areapos");
+					myRs.close();
 					break;
 				case 8:
-					myStmt.setString(1, "Thessaly");
+					myStmt.setString(1, "Perifereia Stereas Elladas");
 					myRs = myStmt.executeQuery();
+					myRs.next();
 					p = myRs.getInt("areapos");
+					myRs.close();
 					break;
 				default:
+					myStmt.setString(1, "Perifereia Kentrikis Makedonias");
+					myRs = myStmt.executeQuery();
+					myRs.next();
+					p = myRs.getInt("areapos");
+					myRs.close();
+					break;
 					
 			}
-			
+			myConn.close();
+			myStmt.close();
 			return p;
 			
 		}
@@ -248,7 +239,7 @@ public class JDBCtry {
 
 			// Create statement
 			
-			PreparedStatement myStmt = myConn.prepareStatement("select count(AMKA) as agepos from Patient where age <= ?");
+			PreparedStatement myStmt = myConn.prepareStatement("select count(AMKA) as agepos from Patient where Age > ? and Age <= ?");
 
 			// Process result set
 			
@@ -256,56 +247,64 @@ public class JDBCtry {
 			ResultSet myRs = null;
 			switch (ageId) {
 				case 1:
-					myStmt.setInt(1, 20);
+					myStmt.setInt(1, 0);
+					myStmt.setInt(2, 20);
 					myRs = myStmt.executeQuery();
 					myRs.next();
 					p = myRs.getInt("agepos");
 					myRs.close();
 					break;
 				case 2:
-					myStmt.setInt(1, 30);
+					myStmt.setInt(1, 20);
+					myStmt.setInt(2, 30);
 					myRs = myStmt.executeQuery();
 					myRs.next();
 					p = myRs.getInt("agepos");
 					myRs.close();
 					break;
 				case 3:
-					myStmt.setInt(1, 40);
+					myStmt.setInt(1, 30);
+					myStmt.setInt(2, 40);
 					myRs = myStmt.executeQuery();
 					myRs.next();
 					p = myRs.getInt("agepos");
 					myRs.close();
 					break;
 				case 4:
-					myStmt.setInt(1, 50);
+					myStmt.setInt(1, 40);
+					myStmt.setInt(2, 50);
 					myRs = myStmt.executeQuery();
 					myRs.next();
 					p = myRs.getInt("agepos");
 					myRs.close();
 					break;
 				case 5:
-					myStmt.setInt(1, 60);
+					myStmt.setInt(1, 50);
+					myStmt.setInt(2, 60);
 					myRs = myStmt.executeQuery();
 					myRs.next();
 					p = myRs.getInt("agepos");
 					myRs.close();
 					break;
 				case 6:
-					myStmt.setInt(1, 70);
+					myStmt.setInt(1, 60);
+					myStmt.setInt(2, 70);
 					myRs = myStmt.executeQuery();
 					myRs.next();
 					p = myRs.getInt("agepos");
 					myRs.close();
 					break;
 				case 7:
-					myStmt.setInt(1, 80);
+					myStmt.setInt(1, 70);
+					myStmt.setInt(2, 80);
 					myRs = myStmt.executeQuery();
 					myRs.next();
 					p = myRs.getInt("agepos");
 					myRs.close();
 					break;
 				default:
-					myStmt.setInt(1, 10);
+					myStmt.setInt(1, 80);
+					myStmt.setInt(2, 150);
 					myRs = myStmt.executeQuery();
 					myRs.next();
 					p = myRs.getInt("agepos");
@@ -313,7 +312,8 @@ public class JDBCtry {
 					break;
 					
 			}
-			
+			myConn.close();
+			myStmt.close();
 			return p;
 			
 		}
@@ -332,18 +332,18 @@ public class JDBCtry {
 
 			Connection myConn = DriverManager.getConnection("jdbc:mysql://prometheus.dmst.aueb.gr:3306/ipetsas_windose?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "ipetsas", "1234");
 			
-			PreparedStatement myStmt = myConn.prepareStatement("select count(AMKA) as ecucount from Patient where ecu = ?");
+			Statement myStmt = myConn.createStatement();
 			
-			ResultSet myRs = null;
-			
-			myStmt.setInt(1, 1);
-			
-			myRs = myStmt.executeQuery();
+			ResultSet myRs = myStmt.executeQuery("select count(amka) as ecucount from Patient where ECU = true");
+									
+			myRs.next();
 						
 			int ecu = myRs.getInt("ecucount");
 			
 			myRs.close();
-
+			
+			myConn.close();
+			myStmt.close();
 			return ecu;
 			
 		}
@@ -361,18 +361,22 @@ public class JDBCtry {
 
 			Connection myConn = DriverManager.getConnection("jdbc:mysql://prometheus.dmst.aueb.gr:3306/ipetsas_windose?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "ipetsas", "1234");
 			
-			PreparedStatement myStmt = myConn.prepareStatement("select count(AMKA) as dcount from Patient where alive = ?");
+			PreparedStatement myStmt = myConn.prepareStatement("select count(AMKA) as dcount from Patient where Alive = ?");
 			
 			ResultSet myRs = null;
 			
 			myStmt.setInt(1, 0);
 			
 			myRs = myStmt.executeQuery();
+			
+			myRs.next();
 						
 			int d = myRs.getInt("dcount");
 			
 			myRs.close();
-	
+			
+			myConn.close();
+			myStmt.close();
 			return d;
 			
 		}
